@@ -1,4 +1,4 @@
-<?php  namespace NinjaRecipe\Classes; 
+<?php  namespace NinjaGallery\Classes; 
 
 class Menu
 {
@@ -6,11 +6,11 @@ class Menu
 	public static function addAdminMenuPages() 
 	{
 	 	add_menu_page(
-            __( 'WP Ninja Recipe', 'ninja_recipe' ),
-            __( 'WP Ninja Recipe', 'ninja_recipe' ),
+            __( 'WP Ninja Gallery', 'ninja_gallery' ),
+            __( 'WP Ninja Gallery', 'ninja_gallery' ),
             static::managePermission(),
-            'wp-ninja-recipe.php',
-            array( static::class, 'renderRecipe'),
+            'wp-ninja-gallery.php',
+            array( static::class, 'renderGallery'),
             '',
             6
         );
@@ -18,14 +18,16 @@ class Menu
 
 	public static function managePermission()
 	{	
-		return apply_filters('ninja_recipe_menu_manager_permission','manage_options');
+		return apply_filters('ninja_gallery_menu_manager_permission','manage_options');
 	}
 
 
-	public static function renderRecipe()
+	public static function renderGallery()
 	{
-		wp_enqueue_script('wp_ninja_recipe_js', NINJA_RECIPE_PUBLIC_DIR_URL.'js/wp_ninja_recipe.js', array('jquery'), NINJA_RECIPE_PLUGIN_DIR_VERSION, true);
-		include	NINJA_RECIPE_PLUGIN_DIR_PATH.'views/admin_view.php';
+		// wp_enqueue_script('wp_ninja_gallery_js', NINJA_RECIPE_PUBLIC_DIR_URL.'js/wp_ninja_gallery.js', array('jquery'), NINJA_RECIPE_PLUGIN_DIR_VERSION, true);
+		// include	NINJA_RECIPE_PLUGIN_DIR_PATH.'views/admin_view.php';
+
+		echo "ruhel khan";
 	}
 
 }

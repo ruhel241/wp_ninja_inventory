@@ -1,13 +1,13 @@
-<?php namespace NinjaRecipe\Classes;
+<?php namespace NinjaGallery\Classes;
 
 class ProcessDemoPage 
 {
 	
 		public static function demoPageDisplay()
 		{
-			if( isset($_GET['ninja_recipe_preview']) && $_GET['ninja_recipe_preview'] )  {
+			if( isset($_GET['ninja_gallery_preview']) && $_GET['ninja_gallery_preview'] )  {
 				if( current_user_can( Menu::managePermission() ) ){
-					$tableId = intval( $_GET['ninja_recipe_preview'] );
+					$tableId = intval( $_GET['ninja_gallery_preview'] );
 					static::renderPreview($tableId);
 				}
 			}
@@ -20,10 +20,10 @@ class ProcessDemoPage
 			
 			if($table){
 				if($table->post_content == 'normal'){
-					$RecipeType  = 'Normal Recipe Type';
+					$GalleryType  = 'Normal Gallery Type';
 				}
 				elseif ($table->post_content == 'advance') {
-					$RecipeType  = 'Advance Recipe Type';
+					$GalleryType  = 'Advance Gallery Type';
 				}
 				
 				static::loadDefaultPageTemplate();
@@ -43,12 +43,12 @@ class ProcessDemoPage
 					return $title;
 				}, 100, 1 );
 
-				add_filter('the_content', function($content) use ($table, $RecipeType) {
+				add_filter('the_content', function($content) use ($table, $GalleryType) {
 
 					if( in_the_loop() ){
-						$custom_content = __( $RecipeType .' '.'Demo Preview( ID:', 'ninja_recipe' );
-						$content = '<div id="ninja_recipe_demo" style="text-align:center" class="recie_demo"><h3>'.$custom_content.$table->ID.')</h3></div><hr/>';
-						$content .= '[ninja_recipe id=]' . $table->ID .']'; 
+						$custom_content = __( $GalleryType .' '.'Demo Preview( ID:', 'ninja_gallery' );
+						$content = '<div id="ninja_gallery_demo" style="text-align:center" class="recie_demo"><h3>'.$custom_content.$table->ID.')</h3></div><hr/>';
+						$content .= '[ninja_gallery id=]' . $table->ID .']'; 
 					}
 					return $content;
 				});
