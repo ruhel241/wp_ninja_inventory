@@ -1,13 +1,15 @@
-<?php namespace NinjaGallery\Classes;
+<?php 
+
+namespace NinjaInventory\Classes; 
 
 class ProcessDemoPage 
 {
 	
 		public static function demoPageDisplay()
 		{
-			if( isset($_GET['ninja_gallery_preview']) && $_GET['ninja_gallery_preview'] )  {
+			if( isset($_GET['ninja_inventory_preview']) && $_GET['ninja_inventory_preview'] )  {
 				if( current_user_can( Menu::managePermission() ) ){
-					$tableId = intval( $_GET['ninja_gallery_preview'] );
+					$tableId = intval( $_GET['ninja_inventory_preview'] );
 					static::renderPreview($tableId);
 				}
 			}
@@ -20,10 +22,10 @@ class ProcessDemoPage
 			
 			if($table){
 				if($table->post_content == 'normal'){
-					$GalleryType  = 'Normal Gallery Type';
+					$inventoryType  = 'Normal Inventory Type';
 				}
 				elseif ($table->post_content == 'advance') {
-					$GalleryType  = 'Advance Gallery Type';
+					$inventoryType  = 'Advance Inventory Type';
 				}
 				
 				static::loadDefaultPageTemplate();
@@ -43,12 +45,12 @@ class ProcessDemoPage
 					return $title;
 				}, 100, 1 );
 
-				add_filter('the_content', function($content) use ($table, $GalleryType) {
+				add_filter('the_content', function($content) use ($table, $inventoryType) {
 
 					if( in_the_loop() ){
-						$custom_content = __( $GalleryType .' '.'Demo Preview( ID:', 'ninja_gallery' );
-						$content = '<div id="ninja_gallery_demo" style="text-align:center" class="recie_demo"><h3>'.$custom_content.$table->ID.')</h3></div><hr/>';
-						$content .= '[ninja_gallery id=]' . $table->ID .']'; 
+						$custom_content = __( $inventoryType .' '.'Demo Preview( ID:', 'ninja_inventory' );
+						$content = '<div id="ninja_inventory_demo" style="text-align:center" class="recie_demo"><h3>'.$custom_content.$table->ID.')</h3></div><hr/>';
+						$content .= '[ninja_inventory id=]' . $table->ID .']'; 
 					}
 					return $content;
 				});

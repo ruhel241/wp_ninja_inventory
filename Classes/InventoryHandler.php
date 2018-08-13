@@ -1,7 +1,9 @@
-<?php namespace NinjaGallery\Classes;
+<?php 
+
+	namespace NinjaInventory\Classes; 
 
 
-class GalleryHandler
+class InventoryHandler
 {
 	
 	public static function handleAjaxCalls()
@@ -10,8 +12,8 @@ class GalleryHandler
 
 		if( $route == 'add_table' ){
 			$tableTitle = sanitize_text_field($_REQUEST['post_title']);
-			$galleryType = sanitize_text_field($_REQUEST['gallery_type']);
-			static::addTable($tableTitle, $galleryType);
+			$inventoryType = sanitize_text_field($_REQUEST['inventory_type']);
+			static::addTable($tableTitle, $inventoryType);
 		}
 
 		if ($route == 'get_table') {
@@ -31,8 +33,8 @@ class GalleryHandler
             $table_con = wp_unslash($_REQUEST['table_config']);
 			$table_config = json_decode(trim(stripslashes($table_con)), true);
 
-			$galleryType = sanitize_text_field($_REQUEST['gallery_type']); 
-			static::updateTableConfig($tableId, $table_config, $galleryType);
+			$inventoryType = sanitize_text_field($_REQUEST['inventory_type']); 
+			static::updateTableConfig($tableId, $table_config, $inventoryType);
         }
 
 
@@ -46,48 +48,48 @@ class GalleryHandler
 
 	public static function handleShortCode($atts)
 	{
-		$defaults = apply_filters('ninja_gallery_shortcode_default', array(
+		$defaults = apply_filters('ninja_inventory_shortcode_default', array(
 			'id' => null
 		));
 		$attributes = shortcode_atts($defaults, $atts);
 		$tableId    = $attributes['id'];
 		$post 	    = get_post($tableId);
-		$galleryMetaData = get_post_meta($tableId, '_ninija_gallery_table_config', true);
-		wp_enqueue_script('ninja_gallery_user_view', NINJA_GALLERY_PUBLIC_DIR_URL.'js/ninja_gallery_user_view.js', array('jquery'), NINJA_GALLERY_PLUGIN_DIR_VERSION, true);
-		wp_localize_script('ninja_gallery_user_view','galleryMetaDataVars', array(
+		$inventoryMetaData = get_post_meta($tableId, '_ninija_inventory_table_config', true);
+		wp_enqueue_script('ninja_inventory_user_view', NINJA_INVENTORY_PUBLIC_DIR_URL.'js/ninja_inventory_user_view.js', array('jquery'), NINJA_INVENTORY_PLUGIN_DIR_VERSION, true);
+		wp_localize_script('ninja_inventory_user_view','inventoryMetaDataVars', array(
 			'post' 			=> $post,
-			'galleryMetaData'=> $galleryMetaData
+			'inventoryMetaData'=> $inventoryMetaData
 		));
-		return "<div id='wp_ninja_gallery'></div>";
+		return "<div id='wp_ninja_inventory'></div>";
 	}
 
 
-	public static function addTable($tableTitle, $galleryType)
+	public static function addTable($tableTitle, $inventoryType)
 	{	
 		
 		if( ! $tableTitle ){
 			wp_send_json_error(array(
-				'message' => __("Please Provide Table Title", "ninja_gallery")
+				'message' => __("Please Provide Table Title", "ninja_inventory")
 			), 423);
 		}
 
-		if( ! $galleryType ){
+		if( ! $inventoryType ){
 			wp_send_json_error(array(
-				'message' => __("Please Select gallery Type", 'ninja_gallery')
+				'message' => __("Please Select inventory Type", 'ninja_inventory')
 			), 423);
 		}
 
 
 		$tableData = array(
 			'post_title'   => $tableTitle,
-			'post_content' => $galleryType,
+			'post_content' => $inventoryType,
 			'post_type'	   => CPT::$CPTName,
 			'post_status'  => 'publish'
 		);
 
 		$tableId = wp_insert_post($tableData);
 
-		do_action('ninja_gallery_added_new_table', $tableId); 
+		do_action('ninja_inventory_added_new_table', $tableId); 
 
 		if(is_wp_error($tableId)){
 			wp_send_json_error(array(
@@ -96,7 +98,7 @@ class GalleryHandler
 		}
 
 		 wp_send_json_success(array(
-            'message'  => __('Table Successfully created','ninja_gallery'),
+            'message'  => __('Table Successfully created','ninja_inventory'),
             'table_id' => $tableId
         ), 200);
 
@@ -119,10 +121,10 @@ class GalleryHandler
 			$formattedTables[] = array(
                 'ID'         	   => $table->ID,
                 'post_title' 	   => $table->post_title,
-                'gallery_type'	   => $table->post_content,
-                'tableConfig' 	   => get_post_meta($table->ID,'_ninija_gallery_table_config', true),
-                'demo_url'	   	   => home_url().'?ninja_gallery_preview='.$table->ID.'#ninja_gallery_demo',
-                'defaultImage'	   => ninja_gallery_PUBLIC_DIR_URL.'img/default-image.jpg'
+                'inventory_type'	   => $table->post_content,
+                'tableConfig' 	   => get_post_meta($table->ID,'_ninija_inventory_table_config', true),
+                'demo_url'	   	   => home_url().'?ninja_inventory_preview='.$table->ID.'#ninja_inventory_demo',
+                'defaultImage'	   => NINJA_INVENTORY_PLUGIN_DIR_URL.'img/default-image.jpg'
             );
 		}
 		wp_send_json_success(array(
@@ -137,19 +139,19 @@ class GalleryHandler
 	{
 			
 		$table = get_post($tableId);
-		$tableConfig = get_post_meta($tableId, '_ninija_gallery_table_config', true);
+		$tableConfig = get_post_meta($tableId, '_ninija_inventory_table_config', true);
 
 		$formattedTable = (object)array(
 			'ID' 		 	   => $table->ID,
 			'post_title' 	   => $table->post_title,
-			'gallery_type'	   => $table->post_content
+			'inventory_type'	   => $table->post_content
 		);
 		
 		wp_send_json_success(array(
             'table'        => $formattedTable,
             'tableConfig'  => $tableConfig,
-            //'demogalleryConfig' => static::getgalleryConfig(),
-            'demo_url' => home_url().'?ninja_gallery_preview='.$tableId.'#ninja_gallery_demo'
+            //'demoinventoryConfig' => static::getinventoryConfig(),
+            'demo_url' => home_url().'?ninja_inventory_preview='.$tableId.'#ninja_inventory_demo'
         ), 200);
 	}
 
@@ -157,30 +159,30 @@ class GalleryHandler
 
 	public function deleteTable($tableId)
 	{	
-		delete_post_meta($tableId, '_ninija_gallery_table_config');	
+		delete_post_meta($tableId, '_ninija_inventory_table_config');	
 		wp_delete_post($tableId);
 		wp_send_json_success(array(
-		  'message' => __('The Table successfully deleted!', 'ninja_gallery')
+		  'message' => __('The Table successfully deleted!', 'ninja_inventory')
 		),200);
 	}
 
 
 
-	public function updateTableConfig($tableId, $table_config, $galleryType)
+	public function updateTableConfig($tableId, $table_config, $inventoryType)
 	{
 		
-		$UpdateNinjagallery = array(
+		$UpdateNinjainventory = array(
 	      'ID'           => $tableId,
-	      'post_content' => $galleryType,
+	      'post_content' => $inventoryType,
 	    );
-		wp_update_post($UpdateNinjagallery);
+		wp_update_post($UpdateNinjainventory);
 
-		update_post_meta($tableId, '_ninija_gallery_table_config', $table_config);
+		update_post_meta($tableId, '_ninija_inventory_table_config', $table_config);
 
-		do_action('ninija_gallery_table_config_updated', $tableId, $table_config);
-		$tableConfig = get_post_meta($tableId, '_ninija_gallery_table_config', true);
+		do_action('ninija_inventory_table_config_updated', $tableId, $table_config);
+		$tableConfig = get_post_meta($tableId, '_ninija_inventory_table_config', true);
 		wp_send_json_success(array(
-            'message' => __('Table Content has been updated', 'ninja_gallery'),
+            'message' => __('Table Content has been updated', 'ninja_inventory'),
             'tableConfig' => $tableConfig,
         ), 200);
 
@@ -190,10 +192,10 @@ class GalleryHandler
 
 	public static function populateDemoData($tableId) //add meta label etc
     {
-        //update_post_meta($tableId, '_ninija_gallery_table_config', static::getGalleryConfig());
+        //update_post_meta($tableId, '_ninija_inventory_table_config', static::getinventoryConfig());
     }
 
-    public static function getGalleryConfig()
+    public static function getinventoryConfig()
 	{
 		return array(
 			

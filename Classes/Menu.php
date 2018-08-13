@@ -1,4 +1,6 @@
-<?php  namespace NinjaGallery\Classes; 
+<?php  
+
+	namespace NinjaInventory\Classes; 
 
 class Menu
 {
@@ -6,11 +8,11 @@ class Menu
 	public static function addAdminMenuPages() 
 	{
 	 	add_menu_page(
-            __( 'WP Ninja Gallery', 'ninja_gallery' ),
-            __( 'WP Ninja Gallery', 'ninja_gallery' ),
+            __( 'Inventory Management', 'ninja_inventory' ),
+            __( 'Inventory Management', 'ninja_inventory' ),
             static::managePermission(),
-            'wp-ninja-gallery.php',
-            array( static::class, 'renderGallery'),
+            'wp-ninja-inventory.php',
+            array( static::class, 'renderInventory'),
             '',
             6
         );
@@ -18,16 +20,16 @@ class Menu
 
 	public static function managePermission()
 	{	
-		return apply_filters('ninja_gallery_menu_manager_permission','manage_options');
+		return apply_filters('ninja_inventory_menu_manager_permission','manage_options');
 	}
 
 
-	public static function renderGallery()
+	public static function renderInventory()
 	{
-		// wp_enqueue_script('wp_ninja_gallery_js', NINJA_RECIPE_PUBLIC_DIR_URL.'js/wp_ninja_gallery.js', array('jquery'), NINJA_RECIPE_PLUGIN_DIR_VERSION, true);
-		// include	NINJA_RECIPE_PLUGIN_DIR_PATH.'views/admin_view.php';
+		
+		wp_enqueue_script('wp_ninja_inventory_js',  NINJA_INVENTORY_PUBLIC_DIR_URL.'js/wp_ninja_inventory.js', array('jquery'), NINJA_INVENTORY_PLUGIN_DIR_VERSION, true);
+		include NINJA_INVENTORY_PLUGIN_DIR_PATH.'views/admin_view.php';
 
-		echo "ruhel khan";
 	}
 
 }
