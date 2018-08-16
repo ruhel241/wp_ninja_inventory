@@ -16,7 +16,16 @@ import {
 	Table,
 	Dialog,
 	TableColumn,
-	RouterLink
+	RouterLink,
+	Container,
+	Aside,
+	Header,
+	Main,
+	Footer,
+	Menu,
+	Submenu,
+	MenuItem,
+	MenuItemGroup,
 
 
 } from 'element-ui'
@@ -32,11 +41,34 @@ Vue.use(Table)
 Vue.use(Dialog)
 Vue.use(TableColumn)
 Vue.use(VueRouter)
+Vue.use(Container)
+Vue.use(Aside)
+Vue.use(Header)
+Vue.use(Main)
+Vue.use(Footer)
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+Vue.use(MenuItemGroup)
 
 
 
 //importing css of required components 
 import 'element-ui/lib/theme-chalk/index.css';
+
+import 'element-ui/lib/theme-chalk/container.css';
+import 'element-ui/lib/theme-chalk/aside.css';
+import 'element-ui/lib/theme-chalk/header.css';
+import 'element-ui/lib/theme-chalk/main.css';
+import 'element-ui/lib/theme-chalk/footer.css';
+import 'element-ui/lib/theme-chalk/menu.css';
+import 'element-ui/lib/theme-chalk/submenu.css';
+import 'element-ui/lib/theme-chalk/submenu.css';
+import 'element-ui/lib/theme-chalk/menu-item.css';
+import 'element-ui/lib/theme-chalk/menu-item-group.css';
+
+
+
 import 'element-ui/lib/theme-chalk/row.css';
 import 'element-ui/lib/theme-chalk/input.css';
 import 'element-ui/lib/theme-chalk/button.css';

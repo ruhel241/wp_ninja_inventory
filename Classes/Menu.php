@@ -20,7 +20,7 @@ class Menu
 
 	public static function managePermission()
 	{	
-		return apply_filters('ninja_inventory_menu_manager_permission','manage_options');
+		return apply_filters('ninja_inventory_menu_manager_permission','edit_others_posts');
 	}
 
 
