@@ -1,0 +1,179 @@
+<template>
+	
+
+	<el-container class="all_requisitions">	
+	
+		 <el-header>
+	    	<h2 class="inventory_titile"> All Requisition </h2>
+
+	    	<div class="action_section">
+				<label> <el-input placeholder="Search Title" suffix-icon="el-icon-search" size="small"></el-input></label>
+				<el-button @click="addRequisitionModal=true" type="primary" size="small">Add New Requisition</el-button>
+			</div>
+
+	    </el-header>
+
+    	<el-main>
+
+    		<!-- All Product Table -->
+    		<el-table
+			    ref="multipleTable"
+			    style="width: 100%"
+			    :data="allRequisitionData"
+			    border>
+		    
+				    <el-table-column type="selection"  width="55"> </el-table-column> 
+
+				
+				  <el-table-column prop="name" label="Title" width="200">  </el-table-column> 
+
+				  <el-table-column prop="description" label="Description" width="300"> </el-table-column>
+
+				  <el-table-column prop="user" label="User" width="200"> </el-table-column>
+
+				  <el-table-column prop="total_products" label="Total Products" width="150"> </el-table-column>
+
+				  <el-table-column prop="date" label="Date" width="150"> </el-table-column>
+
+				  <el-table-column prop="status" label="Status" width="200">
+						<template slot-scope='scope'>
+					  		<el-button type="success" icon="el-icon-check" circle></el-button>
+					  		<el-button type="danger" icon="el-icon-close"  circle></el-button>
+					  	</template>
+				  </el-table-column>
+
+		 		  <el-table-column pop="actions" label="Actions"> 
+		 		  	<template slot-scope='scope'>
+		 		  		<el-button type="primary" icon="el-icon-edit" circle></el-button>
+		 		  		<el-button type="info" icon="el-icon-view" circle></el-button>
+		 		  		<el-button type="danger" icon="el-icon-delete" circle></el-button>
+		 		  	</template>
+		 		  </el-table-column>
+			</el-table>
+		</el-main>
+
+	</el-container>
+
+
+
+
+</template>
+
+
+
+<script>
+	
+export default{
+
+		name: 'AllRequisitions',
+
+
+		data() {
+	        return {
+			    addRequisitionModal:false,
+
+			    allRequisitionData: [
+				 {
+		            name: 'Pencile',
+		            description: 'Nothing to say',
+		            user: 'MAK',
+		            total_products: 60,
+		            date: '10/04/2018'
+		          },
+
+		          {
+		            name: 'Pen',
+		            description: 'Nothing to say',
+		            user: 'Rumel',
+		            total_products: 80,
+		            date: '16/05/2014'
+		          }, 
+
+		          {
+		            name: 'Marker',
+		            description: 'Nothing to say',
+		            user: 'Lahin',
+		            total_products: 40,
+		            date: '18/06/2013'
+		          }, 
+
+		          {
+		            name: 'Mouse',
+		            description: 'Nothing to say',
+		            user: 'Ruhel',
+		            total_products: 45,
+		            date: '13/08/2015'
+		          }
+	          ],
+	          active_menu: ''
+	        }
+ 	    },
+
+ 	    created(){
+		},
+	    
+	    methods:{
+
+	      handleOpen(key, keyPath) {
+	        console.log(key, keyPath);
+	      },
+	      handleClose(key, keyPath) {
+	        console.log(key, keyPath);
+	      }
+
+	    },
+
+	    watch:{
+
+	    }
+
+
+}
+
+
+</script>
+
+
+
+
+
+<style lang="scss">
+	
+.all_requisitions{
+	// width:100%;
+
+	.el-header, .el-footer {
+	    background-color: #fff;
+	    color: #333;
+	    text-align: center;
+	    line-height: 60px;
+	    border-bottom: dashed 1px #ddd;
+	    .inventory_titile {
+	    	float:left;
+	    	color:#40484E;
+	    	margin:0
+	    }
+	    .action_section{
+			float:right;
+			label{
+				display:inline-block;
+			}
+		}
+	}
+
+	.el-main {
+	    background-color: #fff;
+	    color: #333;
+	    text-align: center;
+	    // line-height: 160px;
+  	}
+	.cell{
+	  	text-align:center;
+	}
+
+		
+}
+</style>
+
+
+

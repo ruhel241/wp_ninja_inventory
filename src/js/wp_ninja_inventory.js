@@ -26,6 +26,7 @@ import {
 	Submenu,
 	MenuItem,
 	MenuItemGroup,
+	Checkbox,
 
 
 } from 'element-ui'
@@ -37,6 +38,7 @@ Vue.use(Row)
 Vue.use(Col)
 Vue.use(Button)
 Vue.use(Input)
+Vue.use(Checkbox)
 Vue.use(Table)
 Vue.use(Dialog)
 Vue.use(TableColumn)
@@ -71,6 +73,7 @@ import 'element-ui/lib/theme-chalk/menu-item-group.css';
 
 import 'element-ui/lib/theme-chalk/row.css';
 import 'element-ui/lib/theme-chalk/input.css';
+import 'element-ui/lib/theme-chalk/checkbox.css';
 import 'element-ui/lib/theme-chalk/button.css';
 import 'element-ui/lib/theme-chalk/dialog.css';
 import 'element-ui/lib/theme-chalk/table.css';
