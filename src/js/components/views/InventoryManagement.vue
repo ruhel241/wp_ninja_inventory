@@ -38,7 +38,7 @@
 				          <span> Requisitions </span>
 				        </template>
 						<el-menu-item @click="select_page='all_requisitions'" index="all_requisitions">All Requisition</el-menu-item>
-						<el-menu-item  index="add_new_requisition">Add New Requisition</el-menu-item>
+						<el-menu-item  @click="addRequisitionModal=true" index="add_new_requisition">Add New Requisition</el-menu-item>
 				        <el-menu-item index="printss">Print Requisition</el-menu-item>
 				   </el-submenu>
 
@@ -66,7 +66,10 @@
 	<app-add-productmodal
 		:addProductModal="addProductModal"></app-add-productmodal>
 
-		
+	<app-add-requisition_modal
+	:addRequisitionModal="addRequisitionModal"></app-add-requisition_modal>
+
+	
 
 
 	</div>
@@ -78,6 +81,8 @@
    import AllProducts from '../core/_AllProducts.vue'
    import AllRequisitions from '../core/_AllRequisitions.vue'
 
+   import AddNewRequisition from '../core/_AddNewRequisition.vue'
+
 
 export default {
 
@@ -86,13 +91,15 @@ export default {
     	'app-all-products': AllProducts,
 		'app-add-productmodal': AddNewProduct,
 		'app-all-requisitions': AllRequisitions,
+		'app-add-requisition_modal': AddNewRequisition
     },
 
 	data() {
         return {
 		    addProductModal:false,
+		    addRequisitionModal:false,
 			active_menu: '',
-
+			
 			select_page:'all_products',
 		   
         }

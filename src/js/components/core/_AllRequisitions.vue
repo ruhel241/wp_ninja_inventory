@@ -1,6 +1,5 @@
 <template>
 	
-
 	<el-container class="all_requisitions">	
 	
 		 <el-header>
@@ -52,10 +51,12 @@
 			</el-table>
 		</el-main>
 
+
+
+		<app-add-requisition_modal
+		:addRequisitionModal="addRequisitionModal"></app-add-requisition_modal>
+
 	</el-container>
-
-
-
 
 </template>
 
@@ -63,9 +64,16 @@
 
 <script>
 	
+	import AddNewRequisition from './_AddNewRequisition.vue'
+
 export default{
 
 		name: 'AllRequisitions',
+
+
+	 components:{
+	 	'app-add-requisition_modal': AddNewRequisition
+	 },
 
 
 		data() {
