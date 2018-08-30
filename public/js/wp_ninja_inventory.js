@@ -64861,7 +64861,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.add-requisition-fields .requisition_title #title {\n  margin-top: 5px;\n  margin-bottom: 10px;\n}\n.add-requisition-fields .requisition_desc #description {\n  margin-top: 5px;\n  margin-bottom: 10px;\n}\n.add-requisition-fields .requisition_product .select_requisitionProduct {\n  display: inline-block;\n}\n.add-requisition-fields .requisition_product .select_requisitionProduct #select-product {\n    width: 50%;\n}\n.add-requisition-fields .requisition_product .select_requisitionProduct #quantity {\n    width: 50%;\n}\n.dialog-footer .continue_adding_requisition {\n  float: left;\n}\n.dialog-footer .el-button--primary {\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n", ""]);
+exports.push([module.i, "\n.add-requisition-fields .requisition_title #title {\n  margin-top: 5px;\n  margin-bottom: 10px;\n}\n.add-requisition-fields .requisition_desc #description {\n  margin-top: 5px;\n  margin-bottom: 10px;\n}\n.dialog-footer .continue_adding_requisition {\n  float: left;\n}\n.dialog-footer .el-button--primary {\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n", ""]);
 
 // exports
 
@@ -64872,6 +64872,30 @@ exports.push([module.i, "\n.add-requisition-fields .requisition_title #title {\n
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -65020,23 +65044,74 @@ var render = function() {
             "div",
             { staticClass: "select_requisitionProduct" },
             [
-              _c("el-input", {
-                attrs: {
-                  id: "select-product",
-                  type: "text",
-                  placeholder: "Select Product",
-                  size: "medium"
-                }
-              }),
-              _vm._v(" "),
-              _c("el-input", {
-                attrs: {
-                  id: "quantity",
-                  type: "number",
-                  placeholder: "Enter requisition Quantity",
-                  size: "medium"
-                }
-              })
+              _c(
+                "el-row",
+                { attrs: { gutter: 10 } },
+                [
+                  _c(
+                    "el-col",
+                    { attrs: { span: 10 } },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          id: "select-product",
+                          type: "text",
+                          placeholder: "Select Product",
+                          size: "medium"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-col",
+                    { attrs: { span: 10 } },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          id: "quantity",
+                          type: "number",
+                          placeholder: "Enter requisition Quantity",
+                          size: "medium"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-col",
+                    { attrs: { span: 1 } },
+                    [
+                      _c("el-button", {
+                        attrs: {
+                          type: "danger",
+                          icon: "el-icon-delete",
+                          plain: ""
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-col",
+                    { attrs: { span: 1, offset: 1 } },
+                    [
+                      _c("el-button", {
+                        attrs: {
+                          type: "success",
+                          icon: "el-icon-circle-plus-outline",
+                          plain: ""
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             1
           )

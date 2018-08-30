@@ -22,8 +22,32 @@
                 <label for="product">Product:</label>
                
 				<div class="select_requisitionProduct">
-                	<el-input id="select-product" type="text" placeholder="Select Product" size="medium"></el-input>
-					<el-input id="quantity" type="number" placeholder="Enter requisition Quantity" size="medium"></el-input>
+
+
+				<el-row :gutter="10"> 
+
+					<el-col  :span="10"> 
+						<el-input id="select-product" type="text" placeholder="Select Product" size="medium"></el-input>
+					</el-col>
+
+					<el-col  :span="10"> 
+						<el-input id="quantity" type="number" placeholder="Enter requisition Quantity" size="medium"></el-input>
+					</el-col>
+
+					<el-col :span="1"> 
+						<el-button type="danger" icon="el-icon-delete" plain></el-button>
+					</el-col>
+					<el-col  :span="1" :offset="1"> 
+						<el-button type="success" icon="el-icon-circle-plus-outline" plain></el-button>
+					</el-col>
+
+				</el-row>
+
+                	
+				
+
+
+
 				</div>
                
 			</div>
@@ -106,13 +130,13 @@
 		.requisition_product{
 			
 			.select_requisitionProduct{
-				display:inline-block;
+				// display:inline-block;
 				#select-product{
-					width:50%;
+					// width:50%;
 				}
 				#quantity{
 					// margin-top:5px;
-					width:50%;
+					// width:50%;
 				}
 			}
 
