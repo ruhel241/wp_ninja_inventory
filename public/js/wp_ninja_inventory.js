@@ -64951,9 +64951,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65126,13 +65123,6 @@ var render = function() {
           slot: "footer"
         },
         [
-          _c(
-            "div",
-            { staticClass: "continue_adding_requisition" },
-            [_c("el-checkbox", [_vm._v(" Continue Adding ")])],
-            1
-          ),
-          _vm._v(" "),
           _c(
             "el-button",
             {

@@ -52,20 +52,17 @@
                
 			</div>
 
-          <!--   <div class="requisition_quantity">
-                <label for="quantity">Quantity:</label>
-                <el-input id="quantity" type="number" placeholder="Enter requisition Quantity" size="medium"></el-input>
-            </div> -->
+        
 
 
 		</div>
 
 
 		<span slot="footer" class="dialog-footer">
-			<div class="continue_adding_requisition">
+			<!-- <div class="continue_adding_requisition">
 	            <el-checkbox> Continue Adding </el-checkbox>
 	         </div>
-
+ -->
 			<el-button @click="addRequisitionModal= false">Cancel</el-button>
 		    <el-button type="primary" @click="addRequisitionModal= false">Add Requisition</el-button>
 	    </span>
