@@ -24,27 +24,27 @@
 				    <el-table-column type="selection"  width="55"> </el-table-column> 
 
 				
-				  <el-table-column prop="name" label="Title" width="200">  </el-table-column> 
+				  <el-table-column prop="name" label="Title" width="120">  </el-table-column> 
 
-				  <el-table-column prop="description" label="Description" width="300"> </el-table-column>
+				  <el-table-column prop="description" label="Description" width="200"> </el-table-column>
 
-				  <el-table-column prop="user" label="User" width="200"> </el-table-column>
+				  <el-table-column prop="user" label="User" width="100"> </el-table-column>
 
-				  <el-table-column prop="total_products" label="Total Products" width="150"> </el-table-column>
+				  <el-table-column prop="total_products" label="Total Products" width="120"> </el-table-column>
 
-				  <el-table-column prop="date" label="Date" width="150"> </el-table-column>
+				  <el-table-column prop="date" label="Date" width="100"> </el-table-column>
 
-				  <el-table-column prop="status" label="Status" width="200">
+				  <el-table-column prop="status" label="Status" width="100">
 						<template slot-scope='scope'>
 					  		<el-button type="success" icon="el-icon-check" circle></el-button>
-					  		<el-button type="danger" icon="el-icon-close"  circle></el-button>
+					  		<!--<el-button type="danger" icon="el-icon-close"  circle></el-button>-->
 					  	</template>
 				  </el-table-column>
 
 		 		  <el-table-column pop="actions" label="Actions"> 
 		 		  	<template slot-scope='scope'>
 		 		  		<el-button type="primary" icon="el-icon-edit" circle></el-button>
-		 		  		<el-button type="info" icon="el-icon-view" circle></el-button>
+		 		  		<!--<el-button type="info" icon="el-icon-view" circle></el-button>-->
 		 		  		<el-button type="danger" icon="el-icon-delete" circle></el-button>
 		 		  	</template>
 		 		  </el-table-column>

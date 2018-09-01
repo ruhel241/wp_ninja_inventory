@@ -24,21 +24,21 @@
 					    <el-table-column type="selection"  width="55"> </el-table-column> 
 
 					
-					  <el-table-column prop="name" label="Product Name" width="200">  </el-table-column> 
+					  <el-table-column prop="name" label="Product Name" width="120">  </el-table-column> 
 
-					  <el-table-column prop="description" label="Description" width="300"> </el-table-column>
+					  <el-table-column prop="description" label="Description" width="250"> </el-table-column>
 
-					  <el-table-column prop="quantity" label="Quantity" width="200"> </el-table-column>
-					  <el-table-column prop="date" label="Date" width="200"> </el-table-column>
+					  <el-table-column prop="quantity" label="Quantity" width="100"> </el-table-column>
+					  <el-table-column prop="date" label="Date" width="130"> </el-table-column>
 
-					  <el-table-column prop="alert" label="Alert" width="200">
+					  <el-table-column prop="alert" label="Alert" width="80">
 							<template slot-scope='scope'>
 						  		<el-button type="success" icon="el-icon-check" circle></el-button>
-						  		<el-button type="danger" icon="el-icon-close"  circle></el-button>
+						  		<!--<el-button type="danger" icon="el-icon-close"  circle></el-button>-->
 						  	</template>
 					  </el-table-column>
 
-			 		  <el-table-column pop="actions" label="Actions"> 
+			 		  <el-table-column pop="actions" label="Actions" > 
 			 		  	<template slot-scope='scope'>
 			 		  		<el-button type="primary" icon="el-icon-edit" circle></el-button>
 			 		  		<el-button type="danger" icon="el-icon-delete" circle></el-button>
