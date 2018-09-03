@@ -22,26 +22,47 @@
 			    border>
 		    
 				    <el-table-column type="selection"  width="55"> </el-table-column> 
+					
+					<el-table-column label="Title" width="120"> 
+						<template slot-scope="scope"> 
+					  		<div> <span>{{scope.row.name}}</span></div>
+					  	</template>
+					</el-table-column> 
 
-				
-				  <el-table-column prop="name" label="Title" width="120">  </el-table-column> 
+				 	<el-table-column label="Description" width="200">
+					  	 <template slot-scope="scope"> 
+					  	 	<div> <span>{{scope.row.description}}</span></div>
+					  	 </template>
+					</el-table-column>
 
-				  <el-table-column prop="description" label="Description" width="200"> </el-table-column>
+				    <el-table-column label="User" width="100"> 
+						<template slot-scope="scope">
+					  		<div> <span>{{scope.row.user}}</span></div>
+					  	</template>
+				    </el-table-column>
 
-				  <el-table-column prop="user" label="User" width="100"> </el-table-column>
 
-				  <el-table-column prop="total_products" label="Total Products" width="120"> </el-table-column>
+				 	<el-table-column label="Total Products" width="120">
+					  	<template slot-scope="scope">
+					  		<div><span>{{scope.row.total_products}}</span></div>
+					  	</template>
+					</el-table-column>
 
-				  <el-table-column prop="date" label="Date" width="100"> </el-table-column>
 
-				  <el-table-column prop="status" label="Status" width="100">
+					<el-table-column label="Date" width="100"> 
+				  		<template slot-scope="scope">
+				  			<div> <span>{{scope.row.date}}</span></div>
+				  		</template>
+					</el-table-column>
+
+				  <el-table-column label="Status" width="100">
 						<template slot-scope='scope'>
 					  		<el-button type="success" icon="el-icon-check" circle></el-button>
 					  		<!--<el-button type="danger" icon="el-icon-close"  circle></el-button>-->
 					  	</template>
 				  </el-table-column>
 
-		 		  <el-table-column pop="actions" label="Actions"> 
+		 		  <el-table-column label="Actions"> 
 		 		  	<template slot-scope='scope'>
 		 		  		<el-button type="primary" icon="el-icon-edit" circle></el-button>
 		 		  		<!--<el-button type="info" icon="el-icon-view" circle></el-button>-->

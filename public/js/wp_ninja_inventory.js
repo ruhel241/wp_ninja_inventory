@@ -15791,7 +15791,8 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(74);
-module.exports = __webpack_require__(226);
+__webpack_require__(226);
+module.exports = __webpack_require__(227);
 
 
 /***/ }),
@@ -15836,16 +15837,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_element_ui_lib_theme_chalk_input_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_element_ui_lib_theme_chalk_input_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_element_ui_lib_theme_chalk_checkbox_css__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_element_ui_lib_theme_chalk_checkbox_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_element_ui_lib_theme_chalk_checkbox_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_element_ui_lib_theme_chalk_button_css__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_element_ui_lib_theme_chalk_button_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_element_ui_lib_theme_chalk_button_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_element_ui_lib_theme_chalk_dialog_css__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_element_ui_lib_theme_chalk_dialog_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_element_ui_lib_theme_chalk_dialog_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_element_ui_lib_theme_chalk_table_css__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_element_ui_lib_theme_chalk_table_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21_element_ui_lib_theme_chalk_table_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_element_ui_lib_theme_chalk_table_column_css__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_element_ui_lib_theme_chalk_table_column_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22_element_ui_lib_theme_chalk_table_column_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__AdminApp__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__AdminApp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23__AdminApp__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_element_ui_lib_theme_chalk_option_css__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_element_ui_lib_theme_chalk_option_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_element_ui_lib_theme_chalk_option_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_element_ui_lib_theme_chalk_select_css__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_element_ui_lib_theme_chalk_select_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_element_ui_lib_theme_chalk_select_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_element_ui_lib_theme_chalk_button_css__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_element_ui_lib_theme_chalk_button_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21_element_ui_lib_theme_chalk_button_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_element_ui_lib_theme_chalk_dialog_css__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_element_ui_lib_theme_chalk_dialog_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22_element_ui_lib_theme_chalk_dialog_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_element_ui_lib_theme_chalk_table_css__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_element_ui_lib_theme_chalk_table_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23_element_ui_lib_theme_chalk_table_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_element_ui_lib_theme_chalk_table_column_css__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_element_ui_lib_theme_chalk_table_column_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24_element_ui_lib_theme_chalk_table_column_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__AdminApp__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__AdminApp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_25__AdminApp__);
 
 
 
@@ -15864,6 +15869,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_elem
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_element_ui__["Button"]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_element_ui__["Input"]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_element_ui__["Checkbox"]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_element_ui__["Option"]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_element_ui__["Select"]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_element_ui__["Table"]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_element_ui__["Dialog"]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_element_ui__["TableColumn"]);
@@ -15900,6 +15907,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_elem
 
 
 
+
 //importing the root component 
 
 
@@ -15911,7 +15919,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 	el: "#wp_ninja_inventory",
 	router: router,
 	render: function render(h) {
-		return h(__WEBPACK_IMPORTED_MODULE_23__AdminApp___default.a);
+		return h(__WEBPACK_IMPORTED_MODULE_25__AdminApp___default.a);
 	}
 });
 
@@ -19349,7 +19357,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	components: {},
 
 	data: function data() {
-		return {};
+		return {
+			title: '',
+			description: '',
+			quantity: ''
+		};
+	},
+
+
+	methods: {
+		addNewProduct: function addNewProduct() {
+			var addNewProducts = {
+				name: this.title,
+				description: this.description,
+				quantity: this.quantity
+			};
+			console.log(addNewProducts);
+		}
 	},
 
 	props: {
@@ -19395,6 +19419,13 @@ var render = function() {
                 id: "title",
                 type: "text",
                 placeholder: "Your Product Name"
+              },
+              model: {
+                value: _vm.title,
+                callback: function($$v) {
+                  _vm.title = $$v
+                },
+                expression: "title"
               }
             })
           ],
@@ -19415,6 +19446,13 @@ var render = function() {
                 type: "textarea",
                 rows: 5,
                 placeholder: "Description"
+              },
+              model: {
+                value: _vm.description,
+                callback: function($$v) {
+                  _vm.description = $$v
+                },
+                expression: "description"
               }
             })
           ],
@@ -19433,6 +19471,13 @@ var render = function() {
                 type: "number",
                 placeholder: "Enter Product Quantity",
                 size: "medium"
+              },
+              model: {
+                value: _vm.quantity,
+                callback: function($$v) {
+                  _vm.quantity = $$v
+                },
+                expression: "quantity"
               }
             })
           ],
@@ -19469,14 +19514,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-button",
-            {
-              attrs: { type: "primary" },
-              on: {
-                click: function($event) {
-                  _vm.addProductModal = false
-                }
-              }
-            },
+            { attrs: { type: "primary" }, on: { click: _vm.addNewProduct } },
             [_vm._v("Add Product")]
           )
         ],
@@ -19594,6 +19632,24 @@ exports.push([module.i, "\n.ninja-all-products .el-header, .ninja-all-products .
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AddNewProduct_vue__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AddNewProduct_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__AddNewProduct_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19771,27 +19827,71 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "name", label: "Product Name", width: "120" }
+                attrs: { label: "Product Name", width: "120" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("div", [
+                          _c("span", [_vm._v(_vm._s(scope.row.name))])
+                        ])
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: {
-                  prop: "description",
-                  label: "Description",
-                  width: "250"
-                }
+                attrs: { label: "Description", width: "250" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("div", [
+                          _c("span", [_vm._v(_vm._s(scope.row.description))])
+                        ])
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "quantity", label: "Quantity", width: "100" }
+                attrs: { label: "Quantity", width: "100" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("div", [
+                          _c("span", [_vm._v(_vm._s(scope.row.quantity))])
+                        ])
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "date", label: "Date", width: "130" }
+                attrs: { label: "Date", width: "130" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("div", [
+                          _c("span", [_vm._v(_vm._s(scope.row.date))])
+                        ])
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "alert", label: "Alert", width: "80" },
+                attrs: { label: "Alert", width: "80" },
                 scopedSlots: _vm._u([
                   {
                     key: "default",
@@ -19811,7 +19911,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { pop: "actions", label: "Actions" },
+                attrs: { label: "Actions" },
                 scopedSlots: _vm._u([
                   {
                     key: "default",
@@ -20024,6 +20124,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -20119,7 +20240,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.add-requisition-fields .requisition_title #title {\n  margin-top: 5px;\n  margin-bottom: 10px;\n}\n.add-requisition-fields .requisition_desc #description {\n  margin-top: 5px;\n  margin-bottom: 10px;\n}\n.dialog-footer .continue_adding_requisition {\n  float: left;\n}\n.dialog-footer .el-button--primary {\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n", ""]);
+exports.push([module.i, "\n.add-requisition-fields .requisition_title #title {\n  margin-top: 5px;\n  margin-bottom: 10px;\n}\n.add-requisition-fields .requisition_desc #description {\n  margin-top: 5px;\n  margin-bottom: 10px;\n}\n.add-requisition-fields .requisition_product .select_requisitionProduct .el-col {\n  margin-bottom: 5px;\n}\n.add-requisition-fields .requisition_product .select_requisitionProduct .select_product {\n  width: 100%;\n}\n.add-requisition-fields .requisition_product .select_requisitionProduct .select_product input {\n    background-color: #fff;\n}\n.dialog-footer .continue_adding_requisition {\n  float: left;\n}\n.dialog-footer .el-button--primary {\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n", ""]);
 
 // exports
 
@@ -20208,7 +20329,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -20219,9 +20339,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	data: function data() {
 
-		return {};
+		return {
+
+			title: '',
+			description: '',
+			products: [{
+				product: '', quantity: ''
+			}],
+
+			selects_products: [{
+				value: 'pencile',
+				label: 'Pencile'
+			}, {
+				value: 'pen',
+				label: 'Pen'
+			}, {
+				value: 'marker',
+				label: 'Marker'
+			}, {
+				value: 'mouse',
+				label: 'Mouse'
+			}]
+
+		};
 	},
 
+
+	methods: {
+		addMoreProduct: function addMoreProduct() {
+			this.products.push({
+				product: '',
+				quantity: ''
+			});
+		},
+		deleteProduct: function deleteProduct(index) {
+			this.products.splice(index, 1);
+		},
+		addRequisitionItem: function addRequisitionItem() {
+			var addRequisitionItems = {
+				name: this.title,
+				description: this.description,
+				totalProducts: this.products
+
+			};
+
+			console.log(addRequisitionItems);
+		}
+	},
 
 	props: {
 		addRequisitionModal: {
@@ -20266,6 +20430,13 @@ var render = function() {
                 id: "title",
                 type: "text",
                 placeholder: "Your requisition Name"
+              },
+              model: {
+                value: _vm.title,
+                callback: function($$v) {
+                  _vm.title = $$v
+                },
+                expression: "title"
               }
             })
           ],
@@ -20286,6 +20457,13 @@ var render = function() {
                 type: "textarea",
                 rows: 5,
                 placeholder: "Description"
+              },
+              model: {
+                value: _vm.description,
+                callback: function($$v) {
+                  _vm.description = $$v
+                },
+                expression: "description"
               }
             })
           ],
@@ -20299,76 +20477,109 @@ var render = function() {
             "div",
             { staticClass: "select_requisitionProduct" },
             [
+              _vm._l(_vm.products, function(product, index) {
+                return _c(
+                  "el-row",
+                  { key: index, attrs: { gutter: 10 } },
+                  [
+                    _c(
+                      "el-col",
+                      { attrs: { span: 9 } },
+                      [
+                        _c(
+                          "el-select",
+                          {
+                            staticClass: "select_product",
+                            attrs: {
+                              filterable: "",
+                              placeholder: "Select Product",
+                              size: "medium"
+                            },
+                            model: {
+                              value: product.product,
+                              callback: function($$v) {
+                                _vm.$set(product, "product", $$v)
+                              },
+                              expression: "product.product"
+                            }
+                          },
+                          _vm._l(_vm.selects_products, function(item) {
+                            return _c("el-option", {
+                              key: item.value,
+                              attrs: { label: item.label, value: item.value }
+                            })
+                          })
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "el-col",
+                      { attrs: { span: 10 } },
+                      [
+                        _c("el-input", {
+                          attrs: {
+                            id: "quantity",
+                            type: "number",
+                            placeholder: "Enter requisition Quantity",
+                            size: "medium"
+                          },
+                          model: {
+                            value: product.quantity,
+                            callback: function($$v) {
+                              _vm.$set(product, "quantity", $$v)
+                            },
+                            expression: "product.quantity"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "el-col",
+                      { attrs: { span: 1 } },
+                      [
+                        _c("el-button", {
+                          attrs: {
+                            type: "danger",
+                            icon: "el-icon-delete",
+                            plain: "",
+                            size: "medium"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.deleteProduct(index)
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              }),
+              _vm._v(" "),
               _c(
-                "el-row",
-                { attrs: { gutter: 10 } },
+                "div",
+                { staticClass: "addButtonProduct" },
                 [
-                  _c(
-                    "el-col",
-                    { attrs: { span: 10 } },
-                    [
-                      _c("el-input", {
-                        attrs: {
-                          id: "select-product",
-                          type: "text",
-                          placeholder: "Select Product",
-                          size: "medium"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-col",
-                    { attrs: { span: 10 } },
-                    [
-                      _c("el-input", {
-                        attrs: {
-                          id: "quantity",
-                          type: "number",
-                          placeholder: "Enter requisition Quantity",
-                          size: "medium"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-col",
-                    { attrs: { span: 1 } },
-                    [
-                      _c("el-button", {
-                        attrs: {
-                          type: "danger",
-                          icon: "el-icon-delete",
-                          plain: ""
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-col",
-                    { attrs: { span: 1, offset: 1 } },
-                    [
-                      _c("el-button", {
-                        attrs: {
-                          type: "success",
-                          icon: "el-icon-circle-plus-outline",
-                          plain: ""
-                        }
-                      })
-                    ],
-                    1
-                  )
+                  _c("el-button", {
+                    attrs: {
+                      type: "success",
+                      icon: "el-icon-circle-plus-outline",
+                      plain: "",
+                      size: "medium"
+                    },
+                    on: { click: _vm.addMoreProduct }
+                  })
                 ],
                 1
               )
             ],
-            1
+            2
           )
         ])
       ]),
@@ -20381,27 +20592,13 @@ var render = function() {
           slot: "footer"
         },
         [
-          _c(
-            "el-button",
-            {
-              on: {
-                click: function($event) {
-                  _vm.addRequisitionModal = false
-                }
-              }
-            },
-            [_vm._v("Cancel")]
-          ),
+          _c("el-button", [_vm._v("Cancel")]),
           _vm._v(" "),
           _c(
             "el-button",
             {
               attrs: { type: "primary" },
-              on: {
-                click: function($event) {
-                  _vm.addRequisitionModal = false
-                }
-              }
+              on: { click: _vm.addRequisitionItem }
             },
             [_vm._v("Add Requisition")]
           )
@@ -20489,35 +20686,87 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "name", label: "Title", width: "120" }
+                attrs: { label: "Title", width: "120" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("div", [
+                          _c("span", [_vm._v(_vm._s(scope.row.name))])
+                        ])
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: {
-                  prop: "description",
-                  label: "Description",
-                  width: "200"
-                }
+                attrs: { label: "Description", width: "200" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("div", [
+                          _c("span", [_vm._v(_vm._s(scope.row.description))])
+                        ])
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "user", label: "User", width: "100" }
+                attrs: { label: "User", width: "100" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("div", [
+                          _c("span", [_vm._v(_vm._s(scope.row.user))])
+                        ])
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: {
-                  prop: "total_products",
-                  label: "Total Products",
-                  width: "120"
-                }
+                attrs: { label: "Total Products", width: "120" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("div", [
+                          _c("span", [_vm._v(_vm._s(scope.row.total_products))])
+                        ])
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "date", label: "Date", width: "100" }
+                attrs: { label: "Date", width: "100" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("div", [
+                          _c("span", [_vm._v(_vm._s(scope.row.date))])
+                        ])
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "status", label: "Status", width: "100" },
+                attrs: { label: "Status", width: "100" },
                 scopedSlots: _vm._u([
                   {
                     key: "default",
@@ -20537,7 +20786,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { pop: "actions", label: "Actions" },
+                attrs: { label: "Actions" },
                 scopedSlots: _vm._u([
                   {
                     key: "default",
@@ -65137,6 +65386,106 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 227 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(233);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(2)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../css-loader/index.js!./select.css", function() {
+			var newContent = require("!!../../../css-loader/index.js!./select.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".el-popper .popper__arrow,.el-popper .popper__arrow::after{position:absolute;display:block;width:0;height:0;border-color:transparent;border-style:solid}.el-popper .popper__arrow{border-width:6px;-webkit-filter:drop-shadow(0 2px 12px rgba(0, 0, 0, .03));filter:drop-shadow(0 2px 12px rgba(0, 0, 0, .03))}.el-popper .popper__arrow::after{content:\" \";border-width:6px}.el-popper[x-placement^=top]{margin-bottom:12px}.el-popper[x-placement^=top] .popper__arrow{bottom:-6px;left:50%;margin-right:3px;border-top-color:#ebeef5;border-bottom-width:0}.el-popper[x-placement^=top] .popper__arrow::after{bottom:1px;margin-left:-6px;border-top-color:#fff;border-bottom-width:0}.el-popper[x-placement^=bottom]{margin-top:12px}.el-popper[x-placement^=bottom] .popper__arrow{top:-6px;left:50%;margin-right:3px;border-top-width:0;border-bottom-color:#ebeef5}.el-popper[x-placement^=bottom] .popper__arrow::after{top:1px;margin-left:-6px;border-top-width:0;border-bottom-color:#fff}.el-popper[x-placement^=right]{margin-left:12px}.el-popper[x-placement^=right] .popper__arrow{top:50%;left:-6px;margin-bottom:3px;border-right-color:#ebeef5;border-left-width:0}.el-popper[x-placement^=right] .popper__arrow::after{bottom:-6px;left:1px;border-right-color:#fff;border-left-width:0}.el-popper[x-placement^=left]{margin-right:12px}.el-popper[x-placement^=left] .popper__arrow{top:50%;right:-6px;margin-bottom:3px;border-right-width:0;border-left-color:#ebeef5}.el-popper[x-placement^=left] .popper__arrow::after{right:1px;bottom:-6px;margin-left:-6px;border-right-width:0;border-left-color:#fff}.el-select-dropdown{position:absolute;z-index:1001;border:1px solid #e4e7ed;border-radius:4px;background-color:#fff;-webkit-box-shadow:0 2px 12px 0 rgba(0,0,0,.1);box-shadow:0 2px 12px 0 rgba(0,0,0,.1);-webkit-box-sizing:border-box;box-sizing:border-box;margin:5px 0}.el-select-dropdown.is-multiple .el-select-dropdown__item.selected{color:#409EFF;background-color:#fff}.el-select-dropdown.is-multiple .el-select-dropdown__item.selected.hover{background-color:#f5f7fa}.el-select-dropdown.is-multiple .el-select-dropdown__item.selected::after{position:absolute;right:20px;font-family:element-icons;content:\"\\E611\";font-size:12px;font-weight:700;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.el-select-dropdown .el-scrollbar.is-empty .el-select-dropdown__list{padding:0}.el-select-dropdown__empty{padding:10px 0;margin:0;text-align:center;color:#999;font-size:14px}.el-select-dropdown__wrap{max-height:274px}.el-select-dropdown__list{list-style:none;padding:6px 0;margin:0;-webkit-box-sizing:border-box;box-sizing:border-box}.el-textarea{display:inline-block;width:100%;vertical-align:bottom;font-size:14px}.el-textarea__inner{display:block;resize:vertical;padding:5px 15px;line-height:1.5;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;font-size:inherit;color:#606266;background-color:#fff;background-image:none;border:1px solid #dcdfe6;border-radius:4px;-webkit-transition:border-color .2s cubic-bezier(.645,.045,.355,1);transition:border-color .2s cubic-bezier(.645,.045,.355,1)}.el-textarea__inner::-webkit-input-placeholder{color:#c0c4cc}.el-textarea__inner:-ms-input-placeholder{color:#c0c4cc}.el-textarea__inner::placeholder{color:#c0c4cc}.el-textarea__inner:hover{border-color:#c0c4cc}.el-textarea__inner:focus{outline:0;border-color:#409EFF}.el-textarea.is-disabled .el-textarea__inner{background-color:#f5f7fa;border-color:#e4e7ed;color:#c0c4cc;cursor:not-allowed}.el-textarea.is-disabled .el-textarea__inner::-webkit-input-placeholder{color:#c0c4cc}.el-textarea.is-disabled .el-textarea__inner:-ms-input-placeholder{color:#c0c4cc}.el-textarea.is-disabled .el-textarea__inner::placeholder{color:#c0c4cc}.el-input{position:relative;font-size:14px;display:inline-block;width:100%}.el-input::-webkit-scrollbar{z-index:11;width:6px}.el-input::-webkit-scrollbar:horizontal{height:6px}.el-input::-webkit-scrollbar-thumb{border-radius:5px;width:6px;background:#b4bccc}.el-input::-webkit-scrollbar-corner{background:#fff}.el-input::-webkit-scrollbar-track{background:#fff}.el-input::-webkit-scrollbar-track-piece{background:#fff;width:6px}.el-input .el-input__clear{color:#c0c4cc;font-size:14px;line-height:16px;cursor:pointer;-webkit-transition:color .2s cubic-bezier(.645,.045,.355,1);transition:color .2s cubic-bezier(.645,.045,.355,1)}.el-input .el-input__clear:hover{color:#909399}.el-input__inner{-webkit-appearance:none;background-color:#fff;background-image:none;border-radius:4px;border:1px solid #dcdfe6;-webkit-box-sizing:border-box;box-sizing:border-box;color:#606266;display:inline-block;font-size:inherit;height:40px;line-height:40px;outline:0;padding:0 15px;-webkit-transition:border-color .2s cubic-bezier(.645,.045,.355,1);transition:border-color .2s cubic-bezier(.645,.045,.355,1);width:100%}.el-select-dropdown__item,.el-tag{white-space:nowrap;-webkit-box-sizing:border-box}.el-input__prefix,.el-input__suffix{position:absolute;top:0;-webkit-transition:all .3s;height:100%;color:#c0c4cc;text-align:center}.el-input__inner::-webkit-input-placeholder{color:#c0c4cc}.el-input__inner:-ms-input-placeholder{color:#c0c4cc}.el-input__inner::placeholder{color:#c0c4cc}.el-input__inner:hover{border-color:#c0c4cc}.el-input.is-active .el-input__inner,.el-input__inner:focus{border-color:#409EFF;outline:0}.el-input__suffix{right:5px;transition:all .3s;pointer-events:none}.el-input__suffix-inner{pointer-events:all}.el-input__prefix{left:5px;transition:all .3s}.el-input__icon{height:100%;width:25px;text-align:center;-webkit-transition:all .3s;transition:all .3s;line-height:40px}.el-input__icon:after{content:'';height:100%;width:0;display:inline-block;vertical-align:middle}.el-input__validateIcon{pointer-events:none}.el-input.is-disabled .el-input__inner{background-color:#f5f7fa;border-color:#e4e7ed;color:#c0c4cc;cursor:not-allowed}.el-input.is-disabled .el-input__inner::-webkit-input-placeholder{color:#c0c4cc}.el-input.is-disabled .el-input__inner:-ms-input-placeholder{color:#c0c4cc}.el-input.is-disabled .el-input__inner::placeholder{color:#c0c4cc}.el-input.is-disabled .el-input__icon{cursor:not-allowed}.el-input--suffix .el-input__inner{padding-right:30px}.el-input--prefix .el-input__inner{padding-left:30px}.el-input--medium{font-size:14px}.el-input--medium .el-input__inner{height:36px;line-height:36px}.el-input--medium .el-input__icon{line-height:36px}.el-input--small{font-size:13px}.el-input--small .el-input__inner{height:32px;line-height:32px}.el-input--small .el-input__icon{line-height:32px}.el-input--mini{font-size:12px}.el-input--mini .el-input__inner{height:28px;line-height:28px}.el-input--mini .el-input__icon{line-height:28px}.el-input-group{line-height:normal;display:inline-table;width:100%;border-collapse:separate;border-spacing:0}.el-input-group>.el-input__inner{vertical-align:middle;display:table-cell}.el-input-group__append,.el-input-group__prepend{background-color:#f5f7fa;color:#909399;vertical-align:middle;display:table-cell;position:relative;border:1px solid #dcdfe6;border-radius:4px;padding:0 20px;width:1px;white-space:nowrap}.el-input-group--prepend .el-input__inner,.el-input-group__append{border-top-left-radius:0;border-bottom-left-radius:0}.el-input-group--append .el-input__inner,.el-input-group__prepend{border-top-right-radius:0;border-bottom-right-radius:0}.el-input-group__append:focus,.el-input-group__prepend:focus{outline:0}.el-input-group__append .el-button,.el-input-group__append .el-select,.el-input-group__prepend .el-button,.el-input-group__prepend .el-select{display:inline-block;margin:-10px -20px}.el-input-group__append button.el-button,.el-input-group__append div.el-select .el-input__inner,.el-input-group__append div.el-select:hover .el-input__inner,.el-input-group__prepend button.el-button,.el-input-group__prepend div.el-select .el-input__inner,.el-input-group__prepend div.el-select:hover .el-input__inner{border-color:transparent;background-color:transparent;color:inherit;border-top:0;border-bottom:0}.el-input-group__append .el-button,.el-input-group__append .el-input,.el-input-group__prepend .el-button,.el-input-group__prepend .el-input{font-size:inherit}.el-input-group__prepend{border-right:0}.el-input-group__append{border-left:0}.el-input-group--append .el-select .el-input.is-focus .el-input__inner,.el-input-group--prepend .el-select .el-input.is-focus .el-input__inner{border-color:transparent}.el-input__inner::-ms-clear{display:none;width:0;height:0}.el-tag{background-color:rgba(64,158,255,.1);display:inline-block;padding:0 10px;height:32px;line-height:30px;font-size:12px;color:#409EFF;border-radius:4px;box-sizing:border-box;border:1px solid rgba(64,158,255,.2)}.el-tag .el-icon-close{border-radius:50%;text-align:center;position:relative;cursor:pointer;font-size:12px;height:16px;width:16px;line-height:16px;vertical-align:middle;top:-1px;right:-5px;color:#409EFF}.el-tag .el-icon-close::before{display:block}.el-tag .el-icon-close:hover{background-color:#409EFF;color:#fff}.el-tag--info,.el-tag--info .el-tag__close{color:#909399}.el-tag--info{background-color:rgba(144,147,153,.1);border-color:rgba(144,147,153,.2)}.el-tag--info.is-hit{border-color:#909399}.el-tag--info .el-tag__close:hover{background-color:#909399;color:#fff}.el-tag--success{background-color:rgba(103,194,58,.1);border-color:rgba(103,194,58,.2);color:#67c23a}.el-tag--success.is-hit{border-color:#67c23a}.el-tag--success .el-tag__close{color:#67c23a}.el-tag--success .el-tag__close:hover{background-color:#67c23a;color:#fff}.el-tag--warning{background-color:rgba(230,162,60,.1);border-color:rgba(230,162,60,.2);color:#e6a23c}.el-tag--warning.is-hit{border-color:#e6a23c}.el-tag--warning .el-tag__close{color:#e6a23c}.el-tag--warning .el-tag__close:hover{background-color:#e6a23c;color:#fff}.el-tag--danger{background-color:rgba(245,108,108,.1);border-color:rgba(245,108,108,.2);color:#f56c6c}.el-tag--danger.is-hit{border-color:#f56c6c}.el-tag--danger .el-tag__close{color:#f56c6c}.el-tag--danger .el-tag__close:hover{background-color:#f56c6c;color:#fff}.el-tag--medium{height:28px;line-height:26px}.el-tag--medium .el-icon-close{-webkit-transform:scale(.8);transform:scale(.8)}.el-tag--small{height:24px;padding:0 8px;line-height:22px}.el-tag--small .el-icon-close{-webkit-transform:scale(.8);transform:scale(.8)}.el-tag--mini{height:20px;padding:0 5px;line-height:19px}.el-tag--mini .el-icon-close{margin-left:-3px;-webkit-transform:scale(.7);transform:scale(.7)}.el-select-dropdown__item{font-size:14px;padding:0 20px;position:relative;overflow:hidden;text-overflow:ellipsis;color:#606266;height:34px;line-height:34px;box-sizing:border-box;cursor:pointer}.el-select-dropdown__item.is-disabled{color:#c0c4cc;cursor:not-allowed}.el-select-dropdown__item.is-disabled:hover{background-color:#fff}.el-select-dropdown__item.hover,.el-select-dropdown__item:hover{background-color:#f5f7fa}.el-select-dropdown__item.selected{color:#409EFF;font-weight:700}.el-select-group{margin:0;padding:0}.el-select-group__wrap{position:relative;list-style:none;margin:0;padding:0}.el-select-group__wrap:not(:last-of-type){padding-bottom:24px}.el-select-group__wrap:not(:last-of-type)::after{content:'';position:absolute;display:block;left:20px;right:20px;bottom:12px;height:1px;background:#e4e7ed}.el-select-group__title{padding-left:20px;font-size:12px;color:#909399;line-height:30px}.el-select-group .el-select-dropdown__item{padding-left:20px}.el-scrollbar{overflow:hidden;position:relative}.el-scrollbar:active>.el-scrollbar__bar,.el-scrollbar:focus>.el-scrollbar__bar,.el-scrollbar:hover>.el-scrollbar__bar{opacity:1;-webkit-transition:opacity 340ms ease-out;transition:opacity 340ms ease-out}.el-scrollbar__wrap{overflow:scroll;height:100%}.el-scrollbar__wrap--hidden-default::-webkit-scrollbar{width:0;height:0}.el-scrollbar__thumb{position:relative;display:block;width:0;height:0;cursor:pointer;border-radius:inherit;background-color:rgba(144,147,153,.3);-webkit-transition:.3s background-color;transition:.3s background-color}.el-scrollbar__thumb:hover{background-color:rgba(144,147,153,.5)}.el-scrollbar__bar{position:absolute;right:2px;bottom:2px;z-index:1;border-radius:4px;opacity:0;-webkit-transition:opacity 120ms ease-out;transition:opacity 120ms ease-out}.el-scrollbar__bar.is-vertical{width:6px;top:2px}.el-scrollbar__bar.is-vertical>div{width:100%}.el-scrollbar__bar.is-horizontal{height:6px;left:2px}.el-scrollbar__bar.is-horizontal>div{height:100%}.el-select{display:inline-block;position:relative}.el-select:hover .el-input__inner{border-color:#c0c4cc}.el-select .el-input__inner{cursor:pointer;padding-right:35px}.el-select .el-input__inner:focus{border-color:#409EFF}.el-select .el-input .el-select__caret{color:#c0c4cc;font-size:14px;-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s;-webkit-transform:rotateZ(180deg);transform:rotateZ(180deg);cursor:pointer}.el-select .el-input .el-select__caret.is-reverse{-webkit-transform:rotateZ(0);transform:rotateZ(0)}.el-select .el-input .el-select__caret.is-show-close{font-size:14px;text-align:center;-webkit-transform:rotateZ(180deg);transform:rotateZ(180deg);border-radius:100%;color:#c0c4cc;-webkit-transition:color .2s cubic-bezier(.645,.045,.355,1);transition:color .2s cubic-bezier(.645,.045,.355,1)}.el-select .el-input .el-select__caret.is-show-close:hover{color:#909399}.el-select .el-input.is-disabled .el-input__inner{cursor:not-allowed}.el-select .el-input.is-disabled .el-input__inner:hover{border-color:#e4e7ed}.el-select .el-input.is-focus .el-input__inner{border-color:#409EFF}.el-select>.el-input{display:block}.el-select__input{border:none;outline:0;padding:0;margin-left:15px;color:#666;font-size:14px;-webkit-appearance:none;-moz-appearance:none;appearance:none;height:28px;background-color:transparent}.el-select__input.is-mini{height:14px}.el-select__close{cursor:pointer;position:absolute;top:8px;z-index:1000;right:25px;color:#c0c4cc;line-height:18px;font-size:14px}.el-select__close:hover{color:#909399}.el-select__tags{position:absolute;line-height:normal;white-space:normal;z-index:1;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-wrap:wrap;flex-wrap:wrap}.el-select .el-tag__close{margin-top:-2px}.el-select .el-tag{-webkit-box-sizing:border-box;box-sizing:border-box;border-color:transparent;margin:2px 0 2px 6px;background-color:#f0f2f5}.el-select .el-tag__close.el-icon-close{background-color:#c0c4cc;right:-7px;top:0;color:#fff}.el-select .el-tag__close.el-icon-close:hover{background-color:#909399}.el-select .el-tag__close.el-icon-close::before{display:block;-webkit-transform:translate(0,.5px);transform:translate(0,.5px)}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(235);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(2)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../css-loader/index.js!./option.css", function() {
+			var newContent = require("!!../../../css-loader/index.js!./option.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".el-select-dropdown__item{font-size:14px;padding:0 20px;position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#606266;height:34px;line-height:34px;-webkit-box-sizing:border-box;box-sizing:border-box;cursor:pointer}.el-select-dropdown__item.is-disabled{color:#c0c4cc;cursor:not-allowed}.el-select-dropdown__item.is-disabled:hover{background-color:#fff}.el-select-dropdown__item.hover,.el-select-dropdown__item:hover{background-color:#f5f7fa}.el-select-dropdown__item.selected{color:#409EFF;font-weight:700}", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

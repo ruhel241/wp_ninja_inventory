@@ -10,17 +10,17 @@
 
             <div class="product_title">
                 <label for="title">Name:</label>
-                <el-input id="title" type="text" placeholder="Your Product Name" ></el-input>
+                <el-input v-model="title" id="title" type="text" placeholder="Your Product Name" ></el-input>
             </div>
 
             <div class="product_desc">
                 <label for="description">Description:</label>
-                <el-input id="description" type="textarea" :rows="5"  placeholder="Description"></el-input>
+                <el-input v-model="description" id="description" type="textarea" :rows="5"  placeholder="Description"></el-input>
             </div>
 			
 			<div class="product_quantity">
                 <label for="quantity">Quantity:</label>
-                <el-input id="quantity" type="number" placeholder="Enter Product Quantity" size="medium"></el-input>
+                <el-input v-model="quantity" id="quantity" type="number" placeholder="Enter Product Quantity" size="medium"></el-input>
             </div>
 
         </div>
@@ -32,7 +32,7 @@
          </div>
 
 		<el-button @click="addProductModal = false">Cancel</el-button>
-	    <el-button type="primary" @click="addProductModal = false">Add Product</el-button>
+	    <el-button type="primary" @click="addNewProduct">Add Product</el-button>
 	  </span>
 	</el-dialog>
 
@@ -51,9 +51,24 @@ export default{
 
 	data(){
 	  	return {
-	  		
+	  		title:'',
+	  		description:'',
+	  		quantity:''
 	  	}
 	},
+
+	methods:{
+		addNewProduct(){
+			var addNewProducts = {
+				name: this.title,
+				description: this.description,
+				quantity: this.quantity
+			};
+			console.log(addNewProducts);
+		}
+	},
+
+
 	props:{
 		addProductModal:{
 			default: false
