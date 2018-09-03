@@ -7,7 +7,8 @@ mix.setResourceRoot('../');
 // mix.
 
 mix.js('src/js/wp_ninja_inventory.js', 'public/js/wp_ninja_inventory.js')
-   .sass('src/css/style.scss', 'public/css/style.css');
+   .sass('src/css/style.scss', 'public/css/style.css')
+   .sass('src/css/admin.scss', 'public/css/admin.css');
    
 
 
