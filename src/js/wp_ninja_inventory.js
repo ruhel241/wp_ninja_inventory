@@ -29,7 +29,8 @@ import {
 	Checkbox,
 	Option,
 	Select,
-
+	Message,
+	Notification
 
 } from 'element-ui'
 
@@ -81,7 +82,9 @@ import 'element-ui/lib/theme-chalk/button.css';
 import 'element-ui/lib/theme-chalk/dialog.css';
 import 'element-ui/lib/theme-chalk/table.css';
 import 'element-ui/lib/theme-chalk/table-column.css';
-
+import 'element-ui/lib/theme-chalk/notification.css';
+Vue.prototype.$notify = Notification;
+Vue.prototype.$message = Message;
 
 //importing the root component 
 import App from './AdminApp';

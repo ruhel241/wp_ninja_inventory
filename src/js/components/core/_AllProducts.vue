@@ -25,7 +25,7 @@
 
 						<el-table-column label="Product Name" width="120"> 
 							<template slot-scope="scope">
-						  		<div> <span>{{scope.row.name}}</span></div>
+						  		<div> <span>{{scope.row.product_name}}</span></div>
 						  	</template>
 						</el-table-column> 
 						
@@ -58,7 +58,7 @@
 			 		  <el-table-column label="Actions" > 
 			 		  	<template slot-scope='scope'>
 			 		  		<el-button type="primary" icon="el-icon-edit" circle></el-button>
-			 		  		<el-button type="danger" icon="el-icon-delete" circle></el-button>
+			 		  		<el-button @click="deleteProduct(scope.row.ID)" type="danger" icon="el-icon-delete" circle></el-button>
 			 		  	</template>
 			 		  </el-table-column>
 			 		  
@@ -66,7 +66,10 @@
 			</el-main>
 
 			<app-add-productmodal
-		:addProductModal="addProductModal"></app-add-productmodal>
+			:addProductModal="addProductModal"
+			@addNewProduct="addNewProduct($event)"></app-add-productmodal>
+
+
 
 	</el-container>
 	
@@ -89,53 +92,107 @@ export default {
         return {
 		    addProductModal:false,
 
-
-		    allProductData: [
-			 {
-	            name: 'Pencile',
-	            description: 'Nothing to say',
-	            quantity: 150,
-	            date: '10/04/2018'
-	          },
-
-	          {
-	            name: 'Pen',
-	            description: 'Nothing to say',
-	            quantity: 10,
-	            date: '16/05/2014'
-	          }, 
-
-	          {
-	            name: 'Marker',
-	            description: 'Nothing to say',
-	            quantity: 20,
-	            date: '18/06/2013'
-	          }, 
-
-	          {
-	            name: 'Mouse',
-	            description: 'Nothing to say',
-	            quantity: 30,
-	            date: '13/08/2015'
-	          }
-          ],
+			 allProductData: [],
           active_menu: ''
         }
     },
     created(){
-
-
-
-    },
+		this.fetchTables(); // fetching the table data when application loads
+	},
     methods:{
 
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
+		fetchTables(){
 
+			let fetchTablesAjaxData = {
+				action: 'ninja_inventory_ajax_actions',
+				route: 'get_tables',
+				// per_page: '',
+				// page_number: '',
+			};
+
+			jQuery.get(ajaxurl, fetchTablesAjaxData)
+				.then(
+					 (response) => {
+                        console.log(response)
+                        this.allProductData = response.data.tables;
+                        // this.paginate.total = response.data.total;
+                    }
+				)
+				.fail(
+					(error) => {
+                        this.$notify.error({
+                            title: 'Error',
+                            message: 'This is an error message'
+                        });
+                    }
+				)
+				.always(
+					//  () => {
+                    //     this.tableLoading = false
+                    // }
+				)
+		},
+
+		addNewProduct(add){
+			console.log(add);
+			jQuery.post(ajaxurl, {
+				action: 'ninja_inventory_ajax_actions',
+				route: 'add_table',
+				product_name: add.product_name,
+				description: add.description,
+				quantity:	add.quantity
+			}).then(
+				response => {
+					console.log(response);
+					
+                    this.$notify.success({
+                        title: 'Success',
+                        message: response.data.message
+                    });
+                    // this.$router.push({
+                    //     name: 'edit_table',
+                    //     params: {
+                    //         table_id: response.data.table_id
+                    //     }
+                    // })
+                }
+			).fail(
+				error => {
+                    this.$notify.error({
+                        title: 'Error',
+                        message: error.responseJSON.data.message
+                    });
+                }
+			).always(
+				 () => {
+                    this.addProductModal = false;
+					// this.addingTableAjax = false;
+					this.fetchTables();
+                }
+			)
+		
+		},
+	  
+		deleteProduct(tableId){
+			let deleteAjaxData = {
+				action: 'ninja_inventory_ajax_actions',
+				route: 'delete_table',
+				table_id: tableId
+			}
+			jQuery.post(ajaxurl, deleteAjaxData)
+			  .then(
+				(response) => {
+					this.$notify.success({
+						title: 'Deleted',
+						message: response.data.message
+					})
+					this.fetchTables();
+				}
+			  )
+		},
+
+
+		
 
     },
     watch:{

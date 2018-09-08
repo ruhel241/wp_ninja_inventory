@@ -4,8 +4,6 @@
 	  :visible.sync="addProductModal"
 	  width="40%">
 	  
-
-
 		<div class="add-product-fields">
 
             <div class="product_title">
@@ -58,14 +56,17 @@ export default{
 	},
 
 	methods:{
+		
 		addNewProduct(){
-			var addNewProducts = {
-				name: this.title,
+			var addData = {
+				product_name: this.title,
 				description: this.description,
 				quantity: this.quantity
-			};
-			console.log(addNewProducts);
+			}
+			this.$emit('addNewProduct', addData);
 		}
+
+		
 	},
 
 

@@ -11,16 +11,16 @@ class InventoryHandler
 		$route = sanitize_text_field($_REQUEST['route'] );
 
 		if( $route == 'add_table' ){
-			$tableTitle = sanitize_text_field($_REQUEST['post_title']);
-			$inventoryType = sanitize_text_field($_REQUEST['inventory_type']);
-			static::addTable($tableTitle, $inventoryType);
+			$tableTitle  = sanitize_text_field($_REQUEST['product_name']);
+			$description = sanitize_text_field($_REQUEST['description']);
+			$quantity    = sanitize_text_field($_REQUEST['quantity']);
+			static::addTable($tableTitle, $description, $quantity);
 		}
 
 		if ($route == 'get_table') {
             $tableId = intval($_REQUEST['table_id']);
             static::getTable($tableId, 'ajax');
         }
-
 
 		if( $route == 'get_tables'){
 			$pageNumber = intval($_REQUEST['page_number']);
@@ -64,25 +64,30 @@ class InventoryHandler
 	}
 
 
-	public static function addTable($tableTitle, $inventoryType)
+	public static function addTable($tableTitle, $description, $quantity)
 	{	
-		
 		if( ! $tableTitle ){
 			wp_send_json_error(array(
-				'message' => __("Please Provide Table Title", "ninja_inventory")
+				'message' => __("Please Provide Product Name", "ninja_inventory")
 			), 423);
 		}
 
-		if( ! $inventoryType ){
+		if( ! $description ){
 			wp_send_json_error(array(
-				'message' => __("Please Select inventory Type", 'ninja_inventory')
+				'message' => __("Please Provide Your Description", 'ninja_inventory')
 			), 423);
 		}
 
+		if( !$quantity ){
+			wp_send_json_error( array(
+				'message' => __("Please Provide Your Product Quantity", 'ninja_inventory')
+			), 423 );
+		}
 
 		$tableData = array(
 			'post_title'   => $tableTitle,
-			'post_content' => $inventoryType,
+			'post_content' => $description,
+			'post_excerpt'  => $quantity,
 			'post_type'	   => CPT::$CPTName,
 			'post_status'  => 'publish'
 		);
@@ -98,7 +103,7 @@ class InventoryHandler
 		}
 
 		 wp_send_json_success(array(
-            'message'  => __('Table Successfully created','ninja_inventory'),
+            'message'  => __('Product Successfully created','ninja_inventory'),
             'table_id' => $tableId
         ), 200);
 
@@ -120,17 +125,16 @@ class InventoryHandler
 		foreach ($tables as $table) {
 			$formattedTables[] = array(
                 'ID'         	   => $table->ID,
-                'post_title' 	   => $table->post_title,
-                'inventory_type'	   => $table->post_content,
-                'tableConfig' 	   => get_post_meta($table->ID,'_ninija_inventory_table_config', true),
-                'demo_url'	   	   => home_url().'?ninja_inventory_preview='.$table->ID.'#ninja_inventory_demo',
-                'defaultImage'	   => NINJA_INVENTORY_PLUGIN_DIR_URL.'img/default-image.jpg'
+                'product_name' 	   => $table->post_title,
+				'description'  	   => $table->post_content,
+				'quantity'  	   => $table->post_excerpt,
+                // 'demo_url'	   	   => home_url().'?ninja_inventory_preview='.$table->ID.'#ninja_inventory_demo',
+                // 'defaultImage'	   => NINJA_INVENTORY_PLUGIN_DIR_URL.'img/default-image.jpg'
             );
 		}
 		wp_send_json_success(array(
 			'tables' => $formattedTables,
 			'total'  => intval($totalCount->publish)
-
 		), 200);
 	}
 
