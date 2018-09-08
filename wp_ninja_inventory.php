@@ -19,6 +19,16 @@ define("NINJA_INVENTORY_PUBLIC_DIR_URL", NINJA_INVENTORY_PLUGIN_DIR_URL.'public/
 define("NINJA_INVENTORY_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
 define("NINJA_INVENTORY_PLUGIN_DIR_VERSION", 1.00);
 
+// function activate_inventory_rquisition()
+// {
+//     require_once plugin_dir_path(__FILE__).'includes/NinjaTablesActivator.php';
+//     \NinjaTables\Classes\NinjaTablesActivator::activate();
+// }
+
+// register_activation_hook(__FILE__, 'activate_inventory_rquisition');
+
+
+
 
 class WPNinjaInventory
 {
@@ -26,9 +36,8 @@ class WPNinjaInventory
 	public function boot()
 	{
 		$this->commonHooks();
-		if(is_admin()){
-			$this->adminHooks();
-		}
+		$this->adminHooks();
+		
 		
 		$this->publicHooks();
 		$this->loadTextDomain();
@@ -39,9 +48,12 @@ class WPNinjaInventory
 		add_action('init', array('NinjaInventory\Classes\CPT','register'));
 		add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
 		add_shortcode('ninja_inventory', array('NinjaInventory\Classes\InventoryHandler','handleShortCode') );
+	
+		
 	}
 
 
+	
 	public function adminHooks()
 	{
 		add_action('admin_menu', array('NinjaInventory\Classes\Menu','addAdminMenuPages'));

@@ -91,9 +91,8 @@ export default {
 	data() {
         return {
 		    addProductModal:false,
-
-			 allProductData: [],
-          active_menu: ''
+			allProductData: [],
+          	active_menu: ''
         }
     },
     created(){

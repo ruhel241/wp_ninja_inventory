@@ -51,7 +51,8 @@ export default{
 	  	return {
 	  		title:'',
 	  		description:'',
-	  		quantity:''
+	  		quantity:'',
+	  		//addProductModal: false
 	  	}
 	},
 

@@ -46,22 +46,22 @@ class InventoryHandler
 
 
 
-	public static function handleShortCode($atts)
-	{
-		$defaults = apply_filters('ninja_inventory_shortcode_default', array(
-			'id' => null
-		));
-		$attributes = shortcode_atts($defaults, $atts);
-		$tableId    = $attributes['id'];
-		$post 	    = get_post($tableId);
-		$inventoryMetaData = get_post_meta($tableId, '_ninija_inventory_table_config', true);
-		wp_enqueue_script('ninja_inventory_user_view', NINJA_INVENTORY_PUBLIC_DIR_URL.'js/ninja_inventory_user_view.js', array('jquery'), NINJA_INVENTORY_PLUGIN_DIR_VERSION, true);
-		wp_localize_script('ninja_inventory_user_view','inventoryMetaDataVars', array(
-			'post' 			=> $post,
-			'inventoryMetaData'=> $inventoryMetaData
-		));
-		return "<div id='wp_ninja_inventory'></div>";
-	}
+	// public static function handleShortCode($atts)
+	// {
+	// 	$defaults = apply_filters('ninja_inventory_shortcode_default', array(
+	// 		'id' => null
+	// 	));
+	// 	$attributes = shortcode_atts($defaults, $atts);
+	// 	$tableId    = $attributes['id'];
+	// 	$post 	    = get_post($tableId);
+	// 	$inventoryMetaData = get_post_meta($tableId, '_ninija_inventory_table_config', true);
+	// 	wp_enqueue_script('ninja_inventory_user_view', NINJA_INVENTORY_PUBLIC_DIR_URL.'js/ninja_inventory_user_view.js', array('jquery'), NINJA_INVENTORY_PLUGIN_DIR_VERSION, true);
+	// 	wp_localize_script('ninja_inventory_user_view','inventoryMetaDataVars', array(
+	// 		'post' 			=> $post,
+	// 		'inventoryMetaData'=> $inventoryMetaData
+	// 	));
+	// 	return "<div id='wp_ninja_inventory'></div>";
+	// }
 
 
 	public static function addTable($tableTitle, $description, $quantity)
@@ -128,6 +128,7 @@ class InventoryHandler
                 'product_name' 	   => $table->post_title,
 				'description'  	   => $table->post_content,
 				'quantity'  	   => $table->post_excerpt,
+				'date'  	 	   => $table->post_date
                 // 'demo_url'	   	   => home_url().'?ninja_inventory_preview='.$table->ID.'#ninja_inventory_demo',
                 // 'defaultImage'	   => NINJA_INVENTORY_PLUGIN_DIR_URL.'img/default-image.jpg'
             );
@@ -194,21 +195,21 @@ class InventoryHandler
 	}
 
 
-	public static function populateDemoData($tableId) //add meta label etc
-    {
-        //update_post_meta($tableId, '_ninija_inventory_table_config', static::getinventoryConfig());
-    }
+	// public static function populateDemoData($tableId) //add meta label etc
+ //    {
+ //        //update_post_meta($tableId, '_ninija_inventory_table_config', static::getinventoryConfig());
+ //    }
 
-    public static function getinventoryConfig()
-	{
-		return array(
+ //    public static function getinventoryConfig()
+	// {
+	// 	return array(
 			
-            'ingredient'  => 'ami bala asi',
-            'description' => 'tmi vala aso ni',
-            'nutrition'	  => 'oy vala asi'
+ //            'ingredient'  => 'ami bala asi',
+ //            'description' => 'tmi vala aso ni',
+ //            'nutrition'	  => 'oy vala asi'
 	           
-			);
-	}
+	// 		);
+	// }
 
 
 
