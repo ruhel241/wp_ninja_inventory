@@ -19,14 +19,13 @@ define("NINJA_INVENTORY_PUBLIC_DIR_URL", NINJA_INVENTORY_PLUGIN_DIR_URL.'public/
 define("NINJA_INVENTORY_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
 define("NINJA_INVENTORY_PLUGIN_DIR_VERSION", 1.00);
 
-// function activate_inventory_rquisition()
-// {
-//     require_once plugin_dir_path(__FILE__).'includes/NinjaTablesActivator.php';
-//     \NinjaTables\Classes\NinjaTablesActivator::activate();
-// }
 
-// register_activation_hook(__FILE__, 'activate_inventory_rquisition');
-
+// register Table
+register_activation_hook(__FILE__, array('NinjaInventory\Classes\RequisitionHandler','requisitionDB') );
+// uninstall table
+//register_uninstall_hook()
+// Deactived Table
+register_deactivation_hook(__FILE__, array('NinjaInventory\Classes\RequisitionHandler','deactiveDBTable')  );
 
 
 
@@ -37,8 +36,6 @@ class WPNinjaInventory
 	{
 		$this->commonHooks();
 		$this->adminHooks();
-		
-		
 		$this->publicHooks();
 		$this->loadTextDomain();
 	}
@@ -49,7 +46,7 @@ class WPNinjaInventory
 		add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
 		add_shortcode('ninja_inventory', array('NinjaInventory\Classes\InventoryHandler','handleShortCode') );
 	
-		
+
 	}
 
 
@@ -58,6 +55,7 @@ class WPNinjaInventory
 	{
 		add_action('admin_menu', array('NinjaInventory\Classes\Menu','addAdminMenuPages'));
 		add_action('wp_ajax_ninja_inventory_ajax_actions', array('NinjaInventory\Classes\InventoryHandler','handleAjaxCalls'));
+		add_action('wp_ajax_ninja_inventory_ajax_actions', array('NinjaInventory\Classes\RequisitionHandler','handleAjaxCalls'));
 		add_action('admin_enqueue_scripts', array($this, 'adminEnqueueScripts'));
 		add_action('ninja_inventory_added_new_table', array('NinjaInventory\Classes\InventoryHandler','populateDemoData') );
 	}
