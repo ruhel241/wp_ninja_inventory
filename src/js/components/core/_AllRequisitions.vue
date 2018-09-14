@@ -75,7 +75,9 @@
 
 
 		<app-add-requisition_modal
-		:addRequisitionModal="addRequisitionModal"></app-add-requisition_modal>
+			:addRequisitionModal="addRequisitionModal"
+			@addRequisitionItem="addRequisitionItem($event)"></app-add-requisition_modal>
+
 
 	</el-container>
 
@@ -93,7 +95,8 @@ export default{
 
 
 	 components:{
-	 	'app-add-requisition_modal': AddNewRequisition
+	 	'app-add-requisition_modal': AddNewRequisition,
+	 	
 	 },
 
 
@@ -143,12 +146,53 @@ export default{
 	    
 	    methods:{
 
-	      handleOpen(key, keyPath) {
-	        console.log(key, keyPath);
-	      },
-	      handleClose(key, keyPath) {
-	        console.log(key, keyPath);
-	      }
+
+		    addRequisitionItem(add){
+				jQuery.post(ajaxurl, {
+					action: 'ninja_inventory_ajax_actions',
+					route: 'add_requisition',
+					name: add.name,
+					description: add.description,
+					totalProducts:	add.totalProducts
+				}).then(
+					response => {
+						console.log(response);
+						
+	                    this.$notify.success({
+	                        title: 'Success',
+	                        message: response.data.message
+	                    });
+	                    // this.$router.push({
+	                    //     name: 'edit_table',
+	                    //     params: {
+	                    //         table_id: response.data.table_id
+	                    //     }
+	                    // })
+	                }
+				).fail(
+					error => {
+	                    this.$notify.error({
+	                        title: 'Error',
+	                        message: error.responseJSON.data.message
+	                    });
+	                }
+				).always(
+					 () => {
+	                    this.addRequisitionModal = false;
+						// this.addingTableAjax = false;
+						// this.fetchTables();
+	                }
+				)
+			
+			},
+
+
+
+
+
+
+
+	  
 
 	    },
 

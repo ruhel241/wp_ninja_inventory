@@ -20208,6 +20208,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -20218,6 +20220,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	components: {
 		'app-add-requisition_modal': __WEBPACK_IMPORTED_MODULE_0__AddNewRequisition_vue___default.a
+
 	},
 
 	data: function data() {
@@ -20256,11 +20259,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 	methods: {
-		handleOpen: function handleOpen(key, keyPath) {
-			console.log(key, keyPath);
-		},
-		handleClose: function handleClose(key, keyPath) {
-			console.log(key, keyPath);
+		addRequisitionItem: function addRequisitionItem(add) {
+			var _this = this;
+
+			jQuery.post(ajaxurl, {
+				action: 'ninja_inventory_ajax_actions',
+				route: 'add_requisition',
+				name: add.name,
+				description: add.description,
+				totalProducts: add.totalProducts
+			}).then(function (response) {
+				console.log(response);
+
+				_this.$notify.success({
+					title: 'Success',
+					message: response.data.message
+				});
+				// this.$router.push({
+				//     name: 'edit_table',
+				//     params: {
+				//         table_id: response.data.table_id
+				//     }
+				// })
+			}).fail(function (error) {
+				_this.$notify.error({
+					title: 'Error',
+					message: error.responseJSON.data.message
+				});
+			}).always(function () {
+				_this.addRequisitionModal = false;
+				// this.addingTableAjax = false;
+				// this.fetchTables();
+			});
 		}
 	},
 
@@ -20439,14 +20469,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.products.splice(index, 1);
 		},
 		addRequisitionItem: function addRequisitionItem() {
-			var addRequisitionItems = {
+			var addRequisitionData = {
 				name: this.title,
 				description: this.description,
 				totalProducts: this.products
-
 			};
+			// console.log(addRequisitionData);
 
-			console.log(addRequisitionItems);
+			this.$emit('addRequisitionItem', addRequisitionData);
 		}
 	},
 
@@ -20883,7 +20913,12 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("app-add-requisition_modal", {
-        attrs: { addRequisitionModal: _vm.addRequisitionModal }
+        attrs: { addRequisitionModal: _vm.addRequisitionModal },
+        on: {
+          addRequisitionItem: function($event) {
+            _vm.addRequisitionItem($event)
+          }
+        }
       })
     ],
     1

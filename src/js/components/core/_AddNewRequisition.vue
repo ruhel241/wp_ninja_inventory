@@ -84,7 +84,8 @@
 
 	components:{
 
-	},
+	
+ 	},
 
 	data(){
 
@@ -138,15 +139,18 @@
 
 
 		addRequisitionItem(){
-			var addRequisitionItems = {
+			var addRequisitionData = {
 				name: this.title,
 				description: this.description,
 				totalProducts:this.products,
-				
 			};
+				// console.log(addRequisitionData);
 
-			console.log(addRequisitionItems);
+			this.$emit('addRequisitionItem', addRequisitionData);
 		}
+
+
+
 
 	},
 
