@@ -7,54 +7,44 @@ class RequisitionHandler
 	
 	public static function requisitionDB()
 	{
-		global $wpdb;
-		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		
-		$charset_collate = $wpdb->get_charset_collate();
+		global $wpdb;
+			
+			$charset_collate = $wpdb->get_charset_collate();
+			$table_name = "wp_inventory_requisition_table";
+			$sql = "CREATE TABLE $table_name (
+			`id` int(11) NOT NULL AUTO_INCREMENT,
+			`title` varchar(55) NULL,
+			`description` text NOT NULL,
+			`userId` text NOT NULL,
+			`requisition_products` varchar(55) NULL,
+			`total_products` int(50) NUll,
+			`date` datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			PRIMARY KEY  (id)
+			) $charset_collate;";
 
-		if( count($wpdb->get_var('SHOW TABLES LIKE "wp_inventory_requisition_table"')) == 0 ){
-			$sql = "CREATE TABLE `wp_inventory_requisition_table` (
-			 `id` int(11) NOT NULL AUTO_INCREMENT,
-			 `name` varchar(250) NULL,
-			 `description` varchar(250) NULL,
-			 `requisition_products` text NULL,
-			 PRIMARY KEY  (id)
-			) ENGINE=InnoDB DEFAULT CHARSET=latin1";
-
+			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 			dbDelta( $sql );
-		}
 
+		// global $wpdb, $table_prefix,$table_name;
+		
+		// if( count($wpdb->get_var("SHOW TABLES LIKE wp_inventory_requisition_table")) == 0 ){
+		// 	$charset_collate = $wpdb->get_charset_collate();
+		// 	$sql = "CREATE TABLE `wp_inventory_requisition_table` (
+		// 	id int(11) NOT NULL AUTO_INCREMENT,
+		// 	title varchar(250) NULL,
+		// 	description varchar(250) NULL,
+		// 	userId int(50) NULL,
+		// 	requisition_products text NULL,
+		// 	total_products varchar(250) NULL, 
+		// 	date DATETIME,
+		// 	PRIMARY KEY  (id)
+		// 	) $charset_collate;";
 
-
-// 		global $wpdb;
-
-// $charset_collate = $wpdb->get_charset_collate();
-// $table_name = 'wp_inventory_requisition_table';
-// $sql = "CREATE TABLE $table_name (
-//   id int(11) NOT NULL AUTO_INCREMENT,
-//   `name` varchar(25) NOT NULL,
-//   `description` varchar(250) NOT NULL,
-//   `requisition_products` text DEFAULT '' NOT NULL,
-//   PRIMARY KEY  (id)
-// ) $charset_collate;";
-
-// require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-// dbDelta( $sql );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	}
+		// 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		// 	dbDelta( $sql );
+		// }
+}
 
 
 
@@ -79,7 +69,6 @@ class RequisitionHandler
 			static::addRequisition($tableTitle, $description, $totalProducts);
 		}
 
-
 		if( $route == 'get_requisitions'){
 			$pageNumber = intval($_REQUEST['page_number']);
 			$perPage 	= intval($_REQUEST['per_page']);
@@ -91,23 +80,20 @@ class RequisitionHandler
 
 	public static function addRequisition($tableTitle, $description, $totalProducts)
 	{
+		global $wpdb;
+		
 		$addRequisition = array(
-			'name'		    => $tableTitle,
-			'description'   => $description,
-			'requisition_products' =>  maybe_serialize($totalProducts)
+			'name'		   		   => $tableTitle,
+			'description'   	   => $description,
+			'requisition_products' =>  maybe_serialize($totalProducts),
+			'date' 				   => date('Y-m-d H:i:s', current_time('timestamp', 1))
 		);
 
-
-
-		global $wpdb;
 		$table = 'wp_inventory_requisition_table';
 		$data = $addRequisition;
-		$format = array('%s','%s','%s');
-		$requisitionSuccess = $wpdb->insert($table,$data,$format);
+		$format = array('%s','%s','%d','%s','%s');
+		$requisitionSuccess = $wpdb->insert($table, $data, $format);
 		// $requisitionID = $wpdb->insert_id;
-
-
-
 
 		wp_send_json_error(array(
 			'message' => $requisitionSuccess
