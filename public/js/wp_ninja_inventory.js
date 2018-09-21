@@ -20226,32 +20226,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			addRequisitionModal: false,
-
-			allRequisitionData: [{
-				name: 'Pencile',
-				description: 'Nothing to say',
-				user: 'MAK',
-				total_products: 60,
-				date: '10/04/2018'
-			}, {
-				name: 'Pen',
-				description: 'Nothing to say',
-				user: 'Rumel',
-				total_products: 80,
-				date: '16/05/2014'
-			}, {
-				name: 'Marker',
-				description: 'Nothing to say',
-				user: 'Lahin',
-				total_products: 40,
-				date: '18/06/2013'
-			}, {
-				name: 'Mouse',
-				description: 'Nothing to say',
-				user: 'Ruhel',
-				total_products: 45,
-				date: '13/08/2015'
-			}],
+			allRequisitionData: [],
 			active_menu: ''
 		};
 	},
@@ -20259,19 +20234,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 	methods: {
-		addRequisitionItem: function addRequisitionItem(add) {
+		fetchRequisitions: function fetchRequisitions() {
 			var _this = this;
+
+			var fetchRequisitionAjaxData = {
+				action: 'ninja_inventory_ajax_actions',
+				route: 'get_requisitions'
+				// per_page: '10',
+				// page_number: '1',
+			};
+
+			jQuery.get(ajaxurl, fetchRequisitionAjaxData).then(function (response) {
+				console.log(response);
+				_this.allRequisitionData = response.data.allRequisitions;
+				// this.paginate.total = response.data.total;
+			}).fail(function (error) {
+				_this.$notify.error({
+					title: 'Error',
+					message: 'This is an error message'
+				});
+			}).always();
+		},
+		addRequisitionItem: function addRequisitionItem(add) {
+			var _this2 = this;
 
 			jQuery.post(ajaxurl, {
 				action: 'ninja_inventory_ajax_actions',
 				route: 'add_requisition',
-				name: add.name,
+				title: add.title,
 				description: add.description,
-				totalProducts: add.totalProducts
+				requisition_products: add.requisition_products
 			}).then(function (response) {
 				console.log(response);
 
-				_this.$notify.success({
+				_this2.$notify.success({
 					title: 'Success',
 					message: response.data.message
 				});
@@ -20282,12 +20278,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				//     }
 				// })
 			}).fail(function (error) {
-				_this.$notify.error({
+				_this2.$notify.error({
 					title: 'Error',
 					message: error.responseJSON.data.message
 				});
 			}).always(function () {
-				_this.addRequisitionModal = false;
+				_this2.addRequisitionModal = false;
 				// this.addingTableAjax = false;
 				// this.fetchTables();
 			});
@@ -20470,9 +20466,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		addRequisitionItem: function addRequisitionItem() {
 			var addRequisitionData = {
-				name: this.title,
+				title: this.title,
 				description: this.description,
-				totalProducts: this.products
+				requisition_products: this.products
 			};
 			// console.log(addRequisitionData);
 
@@ -20786,7 +20782,7 @@ var render = function() {
                     fn: function(scope) {
                       return [
                         _c("div", [
-                          _c("span", [_vm._v(_vm._s(scope.row.name))])
+                          _c("span", [_vm._v(_vm._s(scope.row.title))])
                         ])
                       ]
                     }
@@ -20818,7 +20814,7 @@ var render = function() {
                     fn: function(scope) {
                       return [
                         _c("div", [
-                          _c("span", [_vm._v(_vm._s(scope.row.user))])
+                          _c("span", [_vm._v(_vm._s(scope.row.userId))])
                         ])
                       ]
                     }

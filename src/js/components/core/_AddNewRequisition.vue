@@ -140,9 +140,9 @@
 
 		addRequisitionItem(){
 			var addRequisitionData = {
-				name: this.title,
+				title: this.title,
 				description: this.description,
-				totalProducts:this.products,
+				requisition_products:this.products,
 			};
 				// console.log(addRequisitionData);
 

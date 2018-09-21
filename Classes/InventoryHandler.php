@@ -113,6 +113,7 @@ class InventoryHandler
 
 	public static function getTables($pageNumber = 1, $perPage = 10)
 	{
+		
 		$offset = ($pageNumber - 1 ) * $perPage;
 		$tables = get_posts(array(
 			'post_type' 	 => CPT::$CPTName,
@@ -133,6 +134,7 @@ class InventoryHandler
                 // 'defaultImage'	   => NINJA_INVENTORY_PLUGIN_DIR_URL.'img/default-image.jpg'
             );
 		}
+
 		wp_send_json_success(array(
 			'tables' => $formattedTables,
 			'total'  => intval($totalCount->publish)
@@ -162,7 +164,7 @@ class InventoryHandler
 
 
 
-	public function deleteTable($tableId)
+	public static function deleteTable($tableId)
 	{	
 		delete_post_meta($tableId, '_ninija_inventory_table_config');	
 		wp_delete_post($tableId);
@@ -173,7 +175,7 @@ class InventoryHandler
 
 
 
-	public function updateTableConfig($tableId, $table_config, $inventoryType)
+	public static function updateTableConfig($tableId, $table_config, $inventoryType)
 	{
 		
 		$UpdateNinjainventory = array(

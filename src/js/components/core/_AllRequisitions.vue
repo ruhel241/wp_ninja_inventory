@@ -25,7 +25,7 @@
 					
 					<el-table-column label="Title" width="120"> 
 						<template slot-scope="scope"> 
-					  		<div> <span>{{scope.row.name}}</span></div>
+					  		<div> <span>{{scope.row.title}}</span></div>
 					  	</template>
 					</el-table-column> 
 
@@ -37,7 +37,7 @@
 
 				    <el-table-column label="User" width="100"> 
 						<template slot-scope="scope">
-					  		<div> <span>{{scope.row.user}}</span></div>
+					  		<div> <span>{{scope.row.userId}}</span></div>
 					  	</template>
 				    </el-table-column>
 
@@ -103,41 +103,8 @@ export default{
 		data() {
 	        return {
 			    addRequisitionModal:false,
-
-			    allRequisitionData: [
-				 {
-		            name: 'Pencile',
-		            description: 'Nothing to say',
-		            user: 'MAK',
-		            total_products: 60,
-		            date: '10/04/2018'
-		          },
-
-		          {
-		            name: 'Pen',
-		            description: 'Nothing to say',
-		            user: 'Rumel',
-		            total_products: 80,
-		            date: '16/05/2014'
-		          }, 
-
-		          {
-		            name: 'Marker',
-		            description: 'Nothing to say',
-		            user: 'Lahin',
-		            total_products: 40,
-		            date: '18/06/2013'
-		          }, 
-
-		          {
-		            name: 'Mouse',
-		            description: 'Nothing to say',
-		            user: 'Ruhel',
-		            total_products: 45,
-		            date: '13/08/2015'
-		          }
-	          ],
-	          active_menu: ''
+				allRequisitionData: [],
+	          	active_menu: ''
 	        }
  	    },
 
@@ -147,13 +114,46 @@ export default{
 	    methods:{
 
 
+	    fetchRequisitions(){
+
+			let fetchRequisitionAjaxData = {
+				action: 'ninja_inventory_ajax_actions',
+				route: 'get_requisitions',
+				// per_page: '10',
+				// page_number: '1',
+			};
+
+			jQuery.get(ajaxurl, fetchRequisitionAjaxData)
+				.then(
+					 (response) => {
+                        console.log(response)
+                        this.allRequisitionData = response.data.allRequisitions;
+                        // this.paginate.total = response.data.total;
+                    }
+				)
+				.fail(
+					(error) => {
+                        this.$notify.error({
+                            title: 'Error',
+                            message: 'This is an error message'
+                        });
+                    }
+				)
+				.always(
+					//  () => {
+                    //     this.tableLoading = false
+                    // }
+				)
+		},
+
+
 		    addRequisitionItem(add){
 				jQuery.post(ajaxurl, {
 					action: 'ninja_inventory_ajax_actions',
 					route: 'add_requisition',
-					name: add.name,
+					title: add.title,
 					description: add.description,
-					totalProducts:	add.totalProducts
+					requisition_products: add.requisition_products
 				}).then(
 					response => {
 						console.log(response);
