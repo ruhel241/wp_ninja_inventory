@@ -65,9 +65,9 @@
 		 		  <el-table-column label="Actions"> 
 		 		  	<template slot-scope='scope'>
 		 		  		<el-button type="primary" icon="el-icon-edit" circle></el-button>
-		 		  		<!--<el-button type="info" icon="el-icon-view" circle></el-button>-->
-		 		  		<el-button type="danger" icon="el-icon-delete" circle></el-button>
-		 		  	</template>
+		 		  		<app-delete-requisition
+							@delete="deleteRequisition(scope.row.id)"> </app-delete-requisition>
+					</template>
 		 		  </el-table-column>
 			</el-table>
 		</el-main>
@@ -88,6 +88,7 @@
 <script>
 	
 	import AddNewRequisition from './_AddNewRequisition.vue'
+	import DeleteTable from './DeleteTable.vue'
 
 export default{
 
@@ -96,7 +97,7 @@ export default{
 
 	 components:{
 	 	'app-add-requisition_modal': AddNewRequisition,
-	 	
+	 	'app-delete-requisition': DeleteTable
 	 },
 
 
@@ -109,42 +110,42 @@ export default{
  	    },
 
  	    created(){
+ 	    	this.fetchRequisitions();
 		},
 	    
 	    methods:{
 
+			fetchRequisitions(){
 
-	    fetchRequisitions(){
+				let fetchRequisitionAjaxData = {
+					action: 'ninja_inventory_ajax_actions',
+					route: 'get_requisitions',
+					// per_page: '10',
+					// page_number: '1',
+				};
 
-			let fetchRequisitionAjaxData = {
-				action: 'ninja_inventory_ajax_actions',
-				route: 'get_requisitions',
-				// per_page: '10',
-				// page_number: '1',
-			};
-
-			jQuery.get(ajaxurl, fetchRequisitionAjaxData)
-				.then(
-					 (response) => {
-                        console.log(response)
-                        this.allRequisitionData = response.data.allRequisitions;
-                        // this.paginate.total = response.data.total;
-                    }
-				)
-				.fail(
-					(error) => {
-                        this.$notify.error({
-                            title: 'Error',
-                            message: 'This is an error message'
-                        });
-                    }
-				)
-				.always(
-					//  () => {
-                    //     this.tableLoading = false
-                    // }
-				)
-		},
+				jQuery.get(ajaxurl, fetchRequisitionAjaxData)
+					.then(
+						 (response) => {
+	                        console.log(response)
+	                        this.allRequisitionData = response.data.allRequisitions;
+	                        // this.paginate.total = response.data.total;
+	                    }
+					)
+					.fail(
+						(error) => {
+	                        this.$notify.error({
+	                            title: 'Error',
+	                            message: 'This is an error message'
+	                        });
+	                    }
+					)
+					.always(
+						//  () => {
+	                    //     this.tableLoading = false
+	                    // }
+					)
+			},
 
 
 		    addRequisitionItem(add){
@@ -153,7 +154,8 @@ export default{
 					route: 'add_requisition',
 					title: add.title,
 					description: add.description,
-					requisition_products: add.requisition_products
+					requisition_products: add.requisition_products,
+					total_products: add.total_products.length
 				}).then(
 					response => {
 						console.log(response);
@@ -180,21 +182,32 @@ export default{
 					 () => {
 	                    this.addRequisitionModal = false;
 						// this.addingTableAjax = false;
-						// this.fetchTables();
+						this.fetchRequisitions();
 	                }
 				)
 			
 			},
 
 
+			deleteRequisition(id){
+				let deleteAjaxData = {
+					action: 'ninja_inventory_ajax_actions',
+					route: 'delete_requisition',
+					requisitionId : id
+				}
+				jQuery.post(ajaxurl, deleteAjaxData)
+				 .then(
+				   (response) => {
+				   	console.log(response);
+				   	this.$notify.success({
+				   		title: 'Deleted',
+				   		message: response.data.message
+				   	})
+				   	this.fetchRequisitions();
+				 })
+			}
 
-
-
-
-
-	  
-
-	    },
+		},
 
 	    watch:{
 

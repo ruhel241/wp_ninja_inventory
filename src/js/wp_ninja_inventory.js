@@ -30,7 +30,8 @@ import {
 	Option,
 	Select,
 	Message,
-	Notification
+	Notification,
+	Popover
 
 } from 'element-ui'
 
@@ -57,6 +58,7 @@ Vue.use(Menu)
 Vue.use(Submenu)
 Vue.use(MenuItem)
 Vue.use(MenuItemGroup)
+Vue.use(Popover)
 
 
 
@@ -83,6 +85,7 @@ import 'element-ui/lib/theme-chalk/dialog.css';
 import 'element-ui/lib/theme-chalk/table.css';
 import 'element-ui/lib/theme-chalk/table-column.css';
 import 'element-ui/lib/theme-chalk/notification.css';
+import 'element-ui/lib/theme-chalk/popover.css';
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 

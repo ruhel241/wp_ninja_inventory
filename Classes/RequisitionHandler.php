@@ -46,7 +46,8 @@ class RequisitionHandler
 			$title    			  = sanitize_text_field($_REQUEST['title']);
 			$description  		  = sanitize_text_field($_REQUEST['description']);
 			$requisition_products = wp_unslash($_REQUEST['requisition_products']);
-			static::addRequisition($title, $description, $requisition_products);
+			$total_products 	  = intval($_REQUEST['total_products']);
+			static::addRequisition($title, $description, $requisition_products, $total_products);
 		}
 
 		if( $route == 'get_requisitions'){
@@ -55,11 +56,20 @@ class RequisitionHandler
 			static::getRequisitions();
 		}
 
+
+		if($route == 'delete_requisition'){
+			$id = intval($_REQUEST['requisitionId']);
+			static::deleteRequisition($id);
+		}
+
+
+
 	}
 
 
-	public static function addRequisition($title, $description, $requisition_products)
+	public static function addRequisition($title, $description, $requisition_products, $total_products)
 	{
+		
 		global $wpdb;
 					
 		$addRequisition = array(
@@ -67,14 +77,13 @@ class RequisitionHandler
 			'description'   	   => $description,
 			'userId'   	  		   => 1,
 			'requisition_products' =>  maybe_serialize($requisition_products),
-			'total_products'	   =>  20,
+			'total_products'	   =>  $total_products,
 			'date' 				   => date('Y-m-d H:i:s', current_time('timestamp', 1))
 		);
 
 		$table = 'wp_inventory_requisition_table';
 		$data = $addRequisition;
-		$format = array('%s','%s','%d','%s','%s');
-		$requisitionSuccess = $wpdb->insert($table, $data, $format);
+		$requisitionSuccess = $wpdb->insert($table, $data);
 		$requisitionID 		= $wpdb->insert_id;
 
 		wp_send_json_success(array(
@@ -92,7 +101,6 @@ class RequisitionHandler
 		global $wpdb;
 
 		$requisitions = $wpdb->get_results( "SELECT * FROM wp_inventory_requisition_table" );
-
 
 		// $offset = ($pageNumber - 1 ) * $perPage;
 		// $tables = get_posts(array(
@@ -116,14 +124,29 @@ class RequisitionHandler
                 // 'defaultImage'	   => NINJA_INVENTORY_PLUGIN_DIR_URL.'img/default-image.jpg'
             );
 		}
+
 		wp_send_json_success(array(
 			'allRequisitions' => $requisitionsTable,
 			// 'total'  => intval($totalCount->publish)
 		), 200);
-
-
-
 	}
+
+
+
+
+
+	public static function deleteRequisition($id)
+	{	
+		
+		global $wpdb;
+		$table_name = "wp_inventory_requisition_table";
+		$wpdb->delete( $table_name, ['id'=> $id] );
+	
+		wp_send_json_success(array(
+			'message' => __("The Table successfully deleted", 'ninja_inventory'),
+		), 200);
+	}
+
 
 
 

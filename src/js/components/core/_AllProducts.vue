@@ -58,7 +58,9 @@
 			 		  <el-table-column label="Actions" > 
 			 		  	<template slot-scope='scope'>
 			 		  		<el-button type="primary" icon="el-icon-edit" circle></el-button>
-			 		  		<el-button @click="deleteProduct(scope.row.ID)" type="danger" icon="el-icon-delete" circle></el-button>
+			 		  		<app-delete-product
+							@delete="deleteProduct(scope.row.ID)"> </app-delete-product>
+
 			 		  	</template>
 			 		  </el-table-column>
 			 		  
@@ -69,7 +71,7 @@
 			:addProductModal="addProductModal"
 			@addNewProduct="addNewProduct($event)"></app-add-productmodal>
 
-
+			
 
 	</el-container>
 	
@@ -79,13 +81,14 @@
 
 <script>
 	 import AddNewProduct from './_AddNewProduct.vue'
-
+	 import DeleteTable from './DeleteTable.vue'
 export default {
 
     name: 'AllProducts',
    
    	 components:{
-    	'app-add-productmodal': AddNewProduct
+    	'app-add-productmodal': AddNewProduct,
+    	'app-delete-product': DeleteTable
 	 },
 
 	data() {
@@ -98,7 +101,7 @@ export default {
     created(){
 		this.fetchTables(); // fetching the table data when application loads
 	},
-    methods:{
+    methods: {
 
 		fetchTables(){
 
@@ -188,7 +191,7 @@ export default {
 					this.fetchTables();
 				}
 			  )
-		},
+		}
 
 
 		
