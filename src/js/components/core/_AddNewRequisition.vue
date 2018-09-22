@@ -145,7 +145,7 @@
 				requisition_products:this.products,
 				total_products: this.products.length
 			};
-				console.log(addRequisitionData);
+				// console.log(addRequisitionData);
 
 			this.$emit('addRequisitionItem', addRequisitionData);
 		}

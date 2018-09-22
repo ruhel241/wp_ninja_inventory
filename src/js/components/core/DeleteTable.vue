@@ -11,7 +11,7 @@
        <el-button type="primary" size="mini" @click="confirm()">Confirm</el-button>
     </div>
 
-    <el-button slot="reference" title="Delete" size="mini" type="danger" icon="el-icon-delete"></el-button>
+    <el-button slot="reference" title="Delete" type="danger" icon="el-icon-delete" circle></el-button>
 
   </el-popover>
 

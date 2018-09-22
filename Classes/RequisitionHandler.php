@@ -18,6 +18,7 @@ class RequisitionHandler
 		`userId` int(11) NULL,
 		`requisition_products` text NULL,
 		`total_products` int(11) NUll,
+		`status` int(11) DEFAULT '0' NULL,
 		`date` datetime DEFAULT '0000-00-00 00:00:00' NULL,
 		PRIMARY KEY  (id)
 		) $charset_collate;";
@@ -71,25 +72,32 @@ class RequisitionHandler
 	{
 		
 		global $wpdb;
-					
+				
+		$current_user = wp_get_current_user();	
+
 		$addRequisition = array(
 			'title'		   		   => $title,
 			'description'   	   => $description,
-			'userId'   	  		   => 1,
+			'userId'   	  		   => $current_user->ID,
 			'requisition_products' =>  maybe_serialize($requisition_products),
 			'total_products'	   =>  $total_products,
+			'status'	 		   =>  0,
 			'date' 				   => date('Y-m-d H:i:s', current_time('timestamp', 1))
 		);
 
 		$table = 'wp_inventory_requisition_table';
-		$data = $addRequisition;
+		$data  = $addRequisition;
 		$requisitionSuccess = $wpdb->insert($table, $data);
 		$requisitionID 		= $wpdb->insert_id;
 
 		wp_send_json_success(array(
-			'message'  => __('Product Successfully created','ninja_inventory'),
-            'table_id' => $requisitionID
+			'message'  => $data,
 		), 200);
+
+		// wp_send_json_success(array(
+		// 	'message'  => __('Product Successfully created','ninja_inventory'),
+  //           'table_id' => $requisitionID
+		// ), 200);
 
 
 	}

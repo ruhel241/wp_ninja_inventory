@@ -57,8 +57,8 @@
 
 				  <el-table-column label="Status" width="100">
 						<template slot-scope='scope'>
-					  		<el-button type="success" icon="el-icon-check" circle></el-button>
-					  		<!--<el-button type="danger" icon="el-icon-close"  circle></el-button>-->
+					  		<el-button v-if="status === '{scope.row.status}' " type="success" icon="el-icon-check" circle></el-button>
+					  		<el-button v-else type="danger" icon="el-icon-close"  circle></el-button>
 					  	</template>
 				  </el-table-column>
 
@@ -105,7 +105,8 @@ export default{
 	        return {
 			    addRequisitionModal:false,
 				allRequisitionData: [],
-	          	active_menu: ''
+	          	active_menu: '',
+	          	status: '0'
 	        }
  	    },
 
@@ -155,7 +156,7 @@ export default{
 					title: add.title,
 					description: add.description,
 					requisition_products: add.requisition_products,
-					total_products: add.total_products.length
+					total_products: add.total_products
 				}).then(
 					response => {
 						console.log(response);
