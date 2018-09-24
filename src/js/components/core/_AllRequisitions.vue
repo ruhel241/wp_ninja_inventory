@@ -37,7 +37,7 @@
 
 				    <el-table-column label="User" width="100"> 
 						<template slot-scope="scope">
-					  		<div> <span>{{scope.row.userId}}</span></div>
+					  		<div> <span>{{scope.row.user_name}}</span></div>
 					  	</template>
 				    </el-table-column>
 

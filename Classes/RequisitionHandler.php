@@ -2,6 +2,7 @@
 
  namespace NinjaInventory\Classes; 
 
+	
 class RequisitionHandler 
 {
 	
@@ -110,6 +111,8 @@ class RequisitionHandler
 
 		$requisitions = $wpdb->get_results( "SELECT * FROM wp_inventory_requisition_table" );
 
+
+
 		// $offset = ($pageNumber - 1 ) * $perPage;
 		// $tables = get_posts(array(
 		// 	'post_type' 	 => CPT::$CPTName,
@@ -120,17 +123,21 @@ class RequisitionHandler
 		// $totalCount = wp_count_posts(CPT::$CPTName);
 		$requisitionsTable = array();
 		foreach ($requisitions as $requisition) {
+			
+			$user = get_user_by('id', $requisition->id);
+			
 			$requisitionsTable[] = array(
                 'id'         	  	   => $requisition->id,
                 'title' 	  	  	   => $requisition->title,
 				'description'  	  	   => $requisition->description,
-				'userId'  	   	       => $requisition->userId,
+				'user_name'  	   	   => $user->user_nicename,
 				'requisition_products' => maybe_unserialize($requisition->requisition_products),
 				'total_products'  	   => $requisition->total_products,
 				'date'  	 	   	   => $requisition->date
                 // 'demo_url'	   	   => home_url().'?ninja_inventory_preview='.$table->ID.'#ninja_inventory_demo',
                 // 'defaultImage'	   => NINJA_INVENTORY_PLUGIN_DIR_URL.'img/default-image.jpg'
             );
+            
 		}
 
 		wp_send_json_success(array(
