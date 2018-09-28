@@ -49,7 +49,8 @@ class RequisitionHandler
 			$description  		  = sanitize_text_field($_REQUEST['description']);
 			$requisition_products = wp_unslash($_REQUEST['requisition_products']);
 			$total_products 	  = intval($_REQUEST['total_products']);
-			static::addRequisition($title, $description, $requisition_products, $total_products);
+			$status 	  		  = intval($_REQUEST['status']);
+			static::addRequisition($title, $description, $requisition_products, $total_products, $status);
 		}
 
 		if( $route == 'get_requisitions'){
@@ -69,7 +70,7 @@ class RequisitionHandler
 	}
 
 
-	public static function addRequisition($title, $description, $requisition_products, $total_products)
+	public static function addRequisition($title, $description, $requisition_products, $total_products, $status)
 	{
 		
 		global $wpdb;
@@ -80,9 +81,9 @@ class RequisitionHandler
 			'title'		   		   => $title,
 			'description'   	   => $description,
 			'userId'   	  		   => $current_user->ID,
-			'requisition_products' =>  maybe_serialize($requisition_products),
-			'total_products'	   =>  $total_products,
-			'status'	 		   =>  0,
+			'requisition_products' => maybe_serialize($requisition_products),
+			'total_products'	   => $total_products,
+			'status'	 		   => $status,
 			'date' 				   => date('Y-m-d H:i:s', current_time('timestamp', 1))
 		);
 
@@ -133,6 +134,7 @@ class RequisitionHandler
 				'user_name'  	   	   => $user->user_nicename,
 				'requisition_products' => maybe_unserialize($requisition->requisition_products),
 				'total_products'  	   => $requisition->total_products,
+				'status'  	 		   => $requisition->status,
 				'date'  	 	   	   => $requisition->date
                 // 'demo_url'	   	   => home_url().'?ninja_inventory_preview='.$table->ID.'#ninja_inventory_demo',
                 // 'defaultImage'	   => NINJA_INVENTORY_PLUGIN_DIR_URL.'img/default-image.jpg'

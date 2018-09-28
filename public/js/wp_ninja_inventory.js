@@ -20384,6 +20384,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -20403,7 +20405,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			addRequisitionModal: false,
 			allRequisitionData: [],
 			active_menu: '',
-			status: '0'
+			status: 0
 		};
 	},
 	created: function created() {
@@ -20442,7 +20444,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				title: add.title,
 				description: add.description,
 				requisition_products: add.requisition_products,
-				total_products: add.total_products
+				total_products: add.total_products,
+				status: 1
 			}).then(function (response) {
 				console.log(response);
 
@@ -21058,21 +21061,33 @@ var render = function() {
                     key: "default",
                     fn: function(scope) {
                       return [
-                        _vm.status === "{scope.row.status}"
-                          ? _c("el-button", {
-                              attrs: {
-                                type: "success",
-                                icon: "el-icon-check",
-                                circle: ""
-                              }
-                            })
-                          : _c("el-button", {
-                              attrs: {
-                                type: "danger",
-                                icon: "el-icon-close",
-                                circle: ""
-                              }
-                            })
+                        scope.row.status == 1
+                          ? _c(
+                              "span",
+                              [
+                                _c("el-button", {
+                                  attrs: {
+                                    type: "success",
+                                    icon: "el-icon-check",
+                                    circle: ""
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          : _c(
+                              "span",
+                              [
+                                _c("el-button", {
+                                  attrs: {
+                                    type: "danger",
+                                    icon: "el-icon-close",
+                                    circle: ""
+                                  }
+                                })
+                              ],
+                              1
+                            )
                       ]
                     }
                   }
